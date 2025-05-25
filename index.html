@@ -1,0 +1,2523 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>السيرة الذاتية</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap">
+    <style>
+        :root {
+            font-family: 'Cairo', sans-serif;
+        }
+        * {
+            font-family: 'Cairo', sans-serif;
+        }
+        @font-face {
+            font-family: 'Cairo';
+            src: url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+            font-display: swap;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <!-- مكتبات PDF محسنة -->    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>    <script src="markdown-export.js"></script>    <script src="html-export.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+
+        :root {
+            --primary-color: #00a86b;
+            --primary-light: rgba(0, 168, 107, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --text-color: #2c3e50;
+            --sidebar-width: 320px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9f4 0%, #e6f7ef 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            padding-top: 60px; /* إضافة هامش علوي لإفساح المجال لشريط التنقل */
+        }
+
+        /* شريط التنقل العلوي */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        /* تعديل للتأكد من أن شريط التنقل لا يظهر عند التقاط صورة كاملة للصفحة */
+        @media print, (min-resolution: 192dpi) {
+            .navbar, .screenshot-btn {
+                position: absolute;
+                display: none !important;
+            }
+            
+            body {
+                padding-top: 0 !important;
+            }
+        }
+
+        /* الاصلاح للطباعة وتصدير PDF */
+        @media print {
+            .navbar, .export-buttons, .density-controls, .color-switcher, .menu-toggle, .screenshot-btn {
+                display: none !important;
+            }
+            
+            body {
+                padding-top: 0 !important;
+            }
+            
+            .main-layout {
+                margin-top: 0 !important;
+            }
+        }
+
+        /* تنسيق قسم تسجيل الدخول في الجانب الأيمن */
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .auth-buttons button {
+            background-color: transparent;
+            border: none;
+            color: var(--text-color);
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .auth-buttons .login-btn {
+            background-color: transparent;
+        }
+
+        .auth-buttons .login-btn:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .auth-buttons .register-btn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .auth-buttons .register-btn:hover {
+            background-color: #008c5a;
+        }
+
+        /* تنسيق القائمة الرئيسية في الوسط */
+        .main-menu {
+            display: flex;
+            gap: 20px;
+        }
+
+        .main-menu a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .main-menu a:hover {
+            background-color: var(--primary-light);
+            color: var(--primary-color);
+        }
+
+        .main-menu a.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        /* تنسيق أزرار تغيير الألوان في الجانب الأيسر */
+        .color-switcher {
+            display: flex;
+            gap: 8px;
+        }
+
+        .color-option {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.7);
+        }
+
+        .color-option:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .color-option.active {
+            transform: scale(1.2);
+            box-shadow: 0 0 0 2px #fff, 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 10% 20%, var(--primary-light) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, var(--primary-light) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, var(--primary-light) 0%, transparent 30%);
+            z-index: -1;
+        }
+
+        .main-layout {
+            display: flex;
+            flex-direction: row;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: none;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 24px;
+            padding: 32px 20px 32px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            min-height: 100vh;
+        }
+        .sidebar .profile-image {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 18px;
+        }
+        .sidebar .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #fff;
+        }
+        .sidebar .sidebar-name {
+            font-size: 1.7em;
+            font-weight: 700;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+        .sidebar .sidebar-title {
+            font-size: 1.1em;
+            font-weight: 400;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+        .sidebar .sidebar-contact {
+            width: 100%;
+            margin-bottom: 18px;
+        }
+        .sidebar .sidebar-contact p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.08);
+            padding: 7px 12px;
+            border-radius: 16px;
+            margin-bottom: 8px;
+            font-size: 1em;
+            color: #fff;
+        }
+        .sidebar .sidebar-summary-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 7px;
+            margin-top: 10px;
+            color: #fff;
+        }
+        .sidebar .sidebar-summary {
+            font-size: 1em;
+            color: #f0f9f4;
+            text-align: right;
+        }
+
+        .main-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .container {
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+            position: static;
+        }
+        @media (max-width: 900px) {
+            .main-layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                margin-left: 0;
+                margin-bottom: 20px;
+                border-radius: 20px;
+            }
+        }
+        @media print {
+            .main-layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                margin-left: 0;
+                margin-bottom: 20px;
+                border-radius: 20px;
+            }
+        }
+
+        .tech-decoration {
+            position: absolute;
+            font-size: 24px;
+            color: var(--primary-light);
+            z-index: -1;
+        }
+
+        .tech-decoration:nth-child(1) { top: 5%; left: 5%; }
+        .tech-decoration:nth-child(2) { top: 15%; right: 10%; }
+        .tech-decoration:nth-child(3) { bottom: 10%; left: 15%; }
+        .tech-decoration:nth-child(4) { bottom: 20%; right: 5%; }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .export-buttons {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .export-buttons button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-left: 10px;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .export-buttons button:hover {
+            background: #008c5a;
+            transform: translateY(-2px);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 0 20px rgba(0, 168, 107, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+        }
+
+        .profile-image img {
+            width: 98%;
+            height: 98%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .profile-info h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .profile-info h2 {
+            font-size: 1.5em;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: var(--text-color);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--glass-bg);
+            padding: 8px 15px;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5em;
+        }
+
+        .section-title i {
+            background: var(--primary-light);
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .timeline {
+            position: relative;
+            padding-right: 20px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+            padding-right: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--primary-color);
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            right: -4px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+
+        .timeline-item .content {
+            background: var(--glass-bg);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-item {
+            background: var(--glass-bg);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .skill-item span {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .skill-level {
+            height: 8px;
+            background: var(--glass-bg);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(to right, #ff4d4d, #ffcc00, #00cc66);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            display: none;
+        }
+
+        .skill-rating {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 0.8em;
+            color: #666;
+            position: relative;
+        }
+
+        .skill-rating span {
+            position: relative;
+            z-index: 2;
+            padding: 0 5px;
+        }
+
+        .skill-percentage {
+            text-align: center;
+            font-weight: bold;
+            margin: 10px 0;
+            font-size: 1.3em;
+            padding: 8px 0;
+            letter-spacing: 2px;
+            position: relative;
+            display: flex;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 8px;
+            background: #f0f0f0;
+            overflow: hidden;
+            color: #333;
+            justify-content: space-between;
+        }
+
+        .skill-percentage-segment {
+            height: 100%;
+            width: 19%;
+            margin: 0 0.25%;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .skill-percentage-segment.very-weak {
+            background: #ff4d4d;
+        }
+
+        .skill-percentage-segment.weak {
+            background: #ff9933;
+        }
+
+        .skill-percentage-segment.intermediate {
+            background: #ffcc00;
+        }
+
+        .skill-percentage-segment.good {
+            background: #8cd98c;
+        }
+
+        .skill-percentage-segment.very-good {
+            background: #00cc66;
+        }
+
+        .skill-percentage-segment.filled {
+            opacity: 1;
+        }
+
+        .skill-percentage-segment.empty {
+            opacity: 0.2;
+        }
+
+        .skill-percentage-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+            font-weight: bold;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.7);
+        }
+
+        .skill-level-text {
+            text-align: center;
+            font-weight: bold;
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        .skill-level-text[data-level="ضعيف"] {
+            color: #ff4d4d;
+        }
+
+        .skill-level-text[data-level="مبتدئ"] {
+            color: #ff9933;
+        }
+
+        .skill-level-text[data-level="متوسط"] {
+            color: #ffcc00;
+        }
+
+        .skill-level-text[data-level="جيد"] {
+            color: #00cc66;
+        }
+
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .language-item {
+            background: var(--glass-bg);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .sidebar-skills .skills-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .sidebar-skills .skill-item {
+            background: #fff;
+            color: #222;
+            border-radius: 14px;
+            padding: 14px 12px 10px 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            font-weight: 600;
+            font-size: 1em;
+            transition: box-shadow 0.2s;
+        }
+        .sidebar-skills .skill-item span {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+            font-size: 1em;
+        }
+        .sidebar-skills .skill-level {
+            height: 7px;
+            background: #e6f7ef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 7px;
+        }
+        .sidebar-skills .skill-progress {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+
+        .sidebar-languages-title, .sidebar-hobbies-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 7px;
+            color: #fff;
+            text-align: center;
+        }
+        .sidebar-languages-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            width: 100%;
+            padding: 0;
+        }
+        .sidebar-language-item {
+            background: #fff;
+            color: #222;
+            border-radius: 12px;
+            padding: 15px 95px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+            gap: 2px;
+        }
+        .sidebar-language-item:hover {
+            transform: translateY(-5px);
+        }
+        .sidebar-language-item span {
+            display: block;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.3em;
+            width: 100%;
+            text-align: center;
+            margin: 0;
+        }
+
+        .sidebar-language-item .language-skills {
+            width: 100%;
+        }
+        .sidebar-skill-level {
+            height: 8px;
+            background: var(--glass-bg);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .sidebar-skill-progress {
+            height: 100%;
+            background: linear-gradient(to right, #ff4d4d, #ffcc00, #00cc66);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+            display: none;
+        }
+
+        .sidebar-skill-rating {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5px;
+            font-size: 0.8em;
+            color: #666;
+            position: relative;
+        }
+
+        .sidebar-skill-rating span {
+            position: relative;
+            z-index: 2;
+            padding: 0 5px;
+        }
+
+        .sidebar-skill-percentage {
+            text-align: center;
+            font-weight: bold;
+            margin: 0;
+            font-size: 1.4em;
+            padding: 10px 0;
+            letter-spacing: 2px;
+            position: relative;
+            display: flex;
+            width: calc(100% + 190px);
+            margin-right: -95px;
+            margin-left: -95px;
+            height: 55px;
+            line-height: 55px;
+            border-radius: 8px;
+            background: #f0f0f0;
+            overflow: hidden;
+            color: #333;
+            justify-content: space-between;
+        }
+
+        .sidebar-skill-percentage-segment {
+            height: 100%;
+            width: 19%;
+            margin: 0 0.25%;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .sidebar-skill-percentage-segment.very-weak {
+            background: #ff4d4d;
+        }
+
+        .sidebar-skill-percentage-segment.weak {
+            background: #ff9933;
+        }
+
+        .sidebar-skill-percentage-segment.intermediate {
+            background: #ffcc00;
+        }
+
+        .sidebar-skill-percentage-segment.good {
+            background: #8cd98c;
+        }
+
+        .sidebar-skill-percentage-segment.very-good {
+            background: #00cc66;
+        }
+
+        .sidebar-skill-percentage-segment.filled {
+            opacity: 1;
+        }
+
+        .sidebar-skill-percentage-segment.empty {
+            opacity: 0.2;
+        }
+
+        .sidebar-skill-percentage-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+            font-weight: bold;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.7);
+        }
+
+        .sidebar-skill-level-text {
+            text-align: center;
+            font-weight: bold;
+            margin: 10px 0 0 0;
+            font-size: 1.1em;
+        }
+
+        .sidebar-skill-level-text[data-level="ضعيف"] {
+            color: #ff4d4d;
+        }
+
+        .sidebar-skill-level-text[data-level="مبتدئ"] {
+            color: #ff9933;
+        }
+
+        .sidebar-skill-level-text[data-level="متوسط"] {
+            color: #ffcc00;
+        }
+
+        .sidebar-skill-level-text[data-level="جيد"] {
+            color: #00cc66;
+        }
+        .sidebar-hobbies {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            padding: 0 5px !important;
+            position: relative;
+        }
+        
+        .sidebar-hobbies .timeline::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: #333;
+            z-index: 1;
+        }
+        
+        .sidebar-hobbies .timeline-item {
+            position: relative;
+            padding-right: 20px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
+        .sidebar-hobbies .timeline-item::before {
+            content: none;
+        }
+        
+        .sidebar-hobbies .timeline-item::after {
+            content: '';
+            position: absolute;
+            right: -4px;
+            top: 25px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #333;
+            z-index: 2;
+        }
+        
+        .sidebar-hobbies .timeline-item .content {
+            background: #fff;
+            padding: 15px 10px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+        }
+        
+        .sidebar-hobbies .timeline-item .content h4 {
+            margin: 0;
+            padding: 0;
+            font-size: 18px;
+            color: #000;
+            text-align: center;
+        }
+
+        .skills-timeline-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 30px;
+            padding-right: 0.5rem;
+        }
+
+        .skills-timeline-grid .timeline-item {
+            position: relative;
+            margin-bottom: 0.7rem;
+            padding-right: 1.5rem;
+            page-break-inside: avoid;
+            background: var(--glass-bg);
+            border-radius: 15px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .skills-timeline-grid .content {
+            width: 100%;
+        }
+
+        .languages-timeline-list .timeline-item::before {
+            content: '';
+            position: absolute;
+            right: 0.5rem;
+            top: 18px;
+            width: 2px;
+            height: calc(100% - 36px);
+            background-color: #333 !important;
+            z-index: 1;
+        }
+        
+        .languages-timeline-list .timeline-item::after {
+            content: '';
+            position: absolute;
+            right: 0.5rem;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #333;
+            z-index: 2;
+            transform: translateX(4px);
+        }
+
+        .languages-timeline-list .timeline-item .content {
+            background: var(--glass-bg);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--glass-border);
+            height: 90px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .languages-timeline-list .timeline-item .content .skill-percentage {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .languages-timeline-list .skill-percentage-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .sidebar-languages {
+            padding: 0;
+        }
+        
+        .languages-timeline-list {
+            width: 100%;
+        }
+        
+        .languages-timeline-list .timeline-item {
+            position: relative;
+            margin-bottom: 0.7rem;
+            padding-right: 1.5rem;
+            page-break-inside: avoid;
+            background: var(--glass-bg);
+            border-radius: 15px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .languages-list {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 15px;
+            position: relative;
+        }
+        
+        .languages-list::before {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: #333;
+            z-index: 1;
+        }
+        
+        .languages-list .timeline-item {
+            width: 100%;
+            margin-bottom: 0;
+            padding-right: 20px;
+            position: relative;
+        }
+        
+        .languages-list .timeline-item::before {
+            content: none;
+        }
+        
+        .languages-list .timeline-item::after {
+            content: '';
+            position: absolute;
+            right: -4px;
+            top: 15px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #333;
+            z-index: 2;
+        }
+        
+        .languages-list .content {
+            width: 100%;
+            padding: 15px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        
+        .languages-list .content h4 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: #000;
+        }
+        
+        .languages-list .skill-percentage {
+            width: 100%;
+            margin: 5px 0 10px 0;
+            position: relative;
+            height: 30px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .languages-list .skill-percentage-segment {
+            height: 30px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .languages-list .skill-percentage-text {
+            font-size: 18px;
+            font-weight: bold;
+            height: 30px;
+            line-height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .languages-list .skill-level-text {
+            text-align: center;
+            font-size: 16px;
+            margin-top: 8px;
+        }
+        
+        .sidebar-languages {
+            width: 100%;
+            padding: 0 5px !important;
+        }
+        
+        /* تنسيق رسالة التحميل */
+        .download-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px 30px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 10px;
+            z-index: 9999;
+            text-align: center;
+            font-size: 18px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .download-message.error {
+            background-color: rgba(220, 53, 69, 0.9);
+        }
+
+        /* أزرار التحكم بكثافة المحتوى */
+        .density-controls {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+        }
+
+        .density-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid #eee;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .density-btn:hover {
+            background-color: #f9f9f9;
+            transform: translateY(-2px);
+        }
+
+        .density-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* كثافة المحتوى - عالية */
+        body.density-high .timeline-item {
+            padding-bottom: 5px !important;
+            margin-bottom: 5px !important;
+        }
+
+        body.density-high .content {
+            padding: 8px !important;
+        }
+
+        body.density-high .section-title {
+            margin-bottom: 10px !important;
+        }
+
+        body.density-high .glass-card {
+            padding: 15px !important;
+            margin-bottom: 15px !important;
+        }
+
+        body.density-high .sidebar-contact p {
+            padding: 5px 10px !important;
+            margin-bottom: 5px !important;
+        }
+
+        body.density-high * {
+            line-height: 1.4 !important;
+        }
+
+        /* كثافة المحتوى - متوسطة (الافتراضي) */
+        body.density-medium .timeline-item {
+            padding-bottom: 10px !important;
+            margin-bottom: 10px !important;
+        }
+
+        body.density-medium .content {
+            padding: 15px !important;
+        }
+
+        /* كثافة المحتوى - منخفضة */
+        body.density-low .timeline-item {
+            padding-bottom: 20px !important;
+            margin-bottom: 20px !important;
+        }
+
+        body.density-low .content {
+            padding: 25px !important;
+        }
+
+        body.density-low .glass-card {
+            padding: 35px !important;
+            margin-bottom: 35px !important;
+        }
+
+        body.density-low * {
+            line-height: 1.8 !important;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>    <!-- إضافة مكتبة دعم الخطوط الإضافية لـ jsPDF -->    <script src="https://unpkg.com/@babel/polyfill@7.12.1/dist/polyfill.min.js"></script>    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>    <!-- إضافة مكتبة دعم الخط العربي -->    <script src="https://cdn.jsdelivr.net/npm/amiri-font@0.4.2/amiri-font.min.js"></script>    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>    <!-- ملف إصلاح تصدير PDF -->    <script src="pdf-export-fix.js"></script>
+    <style>
+        /* أنماط تحسين تصدير الصورة والطباعة */@media print, (min-resolution: 192dpi) {    .navbar,    .density-controls,    .export-buttons,    .color-switcher,    .menu-toggle {        display: none !important;    }    body {        padding-top: 0 !important;        margin-top: 0 !important;        background-color: #f0f9f4;    }    .main-layout {        margin-top: 0 !important;    }}
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل العلوي -->    <nav class="navbar">        <div class="auth-buttons">            <button class="profile-btn"><i class="fas fa-user"></i> الملف الشخصي</button>            <button class="logout-btn"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>            <button class="download-btn"><i class="fas fa-download"></i> تحميل السيرة</button>        </div>                <div class="main-menu">            <a href="#" class="active">الصفحة الرئيسية</a>            <a href="#">نبذة</a>            <a href="#">الوظائف</a>            <a href="#">الدعم</a>        </div>                <button class="menu-toggle">            <span></span>            <span></span>            <span></span>        </button>    </nav>
+
+    <div class="tech-decoration"><i class="fas fa-microchip"></i></div>
+    <div class="tech-decoration"><i class="fas fa-code"></i></div>
+    <div class="tech-decoration"><i class="fas fa-chart-line"></i></div>
+    <div class="tech-decoration"><i class="fas fa-database"></i></div>
+
+    <div class="export-buttons">
+        <div class="density-controls">
+            <button id="density-high" class="density-btn" title="كثافة عالية - محتوى مضغوط"><i class="fas fa-compress-alt"></i></button>
+            <button id="density-medium" class="density-btn active" title="كثافة متوسطة - الوضع الافتراضي"><i class="fas fa-expand"></i></button>
+            <button id="density-low" class="density-btn" title="كثافة منخفضة - محتوى موسع"><i class="fas fa-expand-alt"></i></button>
+        </div>
+    </div>
+
+    <div class="main-layout">
+        <aside class="sidebar">
+            <div class="profile-image">
+                <img src="Ahmed.png" alt="أحمد الإبراهيم">
+            </div>
+            <div class="sidebar-name" contenteditable="true">أحمد الإبراهيم</div>
+            <div class="sidebar-title" contenteditable="true">محاسب | خبير في الذكاء الاصطناعي وإدارة البيانات</div>
+            <div class="sidebar-contact">
+                <p><i class="fas fa-envelope"></i> <span contenteditable="true">ahmedelibrahiim@gmail.com</span></p>
+                <p><i class="fas fa-phone"></i> <span contenteditable="true">+963994842769</span></p>
+                <p><i class="fas fa-map-marker-alt"></i> <span contenteditable="true">سوريا – حلب</span></p>
+                <p><i class="fas fa-calendar"></i> <span contenteditable="true">18 يناير 1982</span></p>
+                <p><i class="fas fa-user"></i> <span contenteditable="true">متزوج</span></p>
+            </div>
+            <div class="sidebar-summary-title"><i class="fas fa-user"></i> نبذة شخصية</div>
+            <div class="sidebar-summary" contenteditable="true">
+                محاسب محترف مع خبرة عملية تزيد عن 20 عاماً في مجالات متنوعة تشمل المحاسبة وصيانة الحواسيب وإدارة المشاريع. أسعى دائماً لتطوير مهاراتي وتطبيق أحدث التقنيات في مجال عملي.
+            </div>
+            <div class="sidebar-languages-title" style="margin-top:22px;"><i class="fas fa-language"></i> اللغات <span class="add-btn" data-section="languages">🌐</span></div>
+            <div class="sidebar-languages" style="padding: 0;">
+                <div class="languages-list" id="languages-timeline-list">
+                    <div class="timeline-item">
+                        <div class="content">
+                            <h4 contenteditable="true">العربية</h4>
+                            <div class="skill-percentage">
+                                <div class="skill-percentage-segment very-weak filled"></div>
+                                <div class="skill-percentage-segment weak filled"></div>
+                                <div class="skill-percentage-segment intermediate filled"></div>
+                                <div class="skill-percentage-segment good filled"></div>
+                                <div class="skill-percentage-segment very-good filled"></div>
+                                <div class="skill-percentage-text" contenteditable="true">100%</div>
+                            </div>
+                            <div class="skill-level-text" data-level="ممتاز">ممتاز</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="content">
+                            <h4 contenteditable="true">الإنجليزية</h4>
+                            <div class="skill-percentage">
+                                <div class="skill-percentage-segment very-weak filled"></div>
+                                <div class="skill-percentage-segment weak filled"></div>
+                                <div class="skill-percentage-segment intermediate filled"></div>
+                                <div class="skill-percentage-segment good filled"></div>
+                                <div class="skill-percentage-segment very-good empty"></div>
+                                <div class="skill-percentage-text" contenteditable="true">70%</div>
+                            </div>
+                            <div class="skill-level-text" data-level="جيد">جيد</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="content">
+                            <h4 contenteditable="true">التركية</h4>
+                            <div class="skill-percentage">
+                                <div class="skill-percentage-segment very-weak filled"></div>
+                                <div class="skill-percentage-segment weak filled"></div>
+                                <div class="skill-percentage-segment intermediate empty"></div>
+                                <div class="skill-percentage-segment good empty"></div>
+                                <div class="skill-percentage-segment very-good empty"></div>
+                                <div class="skill-percentage-text" contenteditable="true">30%</div>
+                            </div>
+                            <div class="skill-level-text" data-level="مبتدئ">مبتدئ</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="default-message" id="languages-default" style="display: none; text-align: center; color: #666;">لا يوجد لغات</div>
+            </div>
+            <div class="sidebar-hobbies-title" style="margin-top:22px;"><i class="fas fa-chess"></i> الهوايات <span class="add-btn" data-section="hobbies">🎯</span></div>
+            <div class="sidebar-hobbies" style="display: flex; flex-direction: column; gap: 16px; padding: 0 5px;">
+                <div class="hobbies-list" id="hobbies-timeline-list" style="position: relative; background: none; border: none;">
+                    <div class="timeline-item">
+                        <div class="content">
+                            <h4 contenteditable="true">الشطرنج</h4>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="content">
+                            <h4 contenteditable="true">القراءة</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="default-message" id="hobbies-default" style="display: none; text-align: center; color: #666;">لا يوجد هوايات</div>
+            </div>
+        </aside>
+        <div class="main-content">
+            <div class="container" id="cv-content">
+                <main>
+                    <section class="glass-card">
+                        <h3 class="section-title"><i class="fas fa-graduation-cap"></i> المؤهلات العلمية والدورات التدريبية</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div>
+                                <h4 style="color: var(--primary-color); margin-bottom: 15px; text-align: center;">المؤهلات العلمية <span class="add-btn" data-section="qualifications">🎓</span></h4>
+                                <div class="timeline" id="qualifications-timeline">
+                                    <div class="timeline-item">
+                                        <div class="content">
+                                            <h4 contenteditable="true">شهادة ثانوية في التجارة</h4>
+                                            <p contenteditable="true">محاسبة + تسويق إلكتروني (2000)</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="content">
+                                            <h4 contenteditable="true">شهادة محاسبة</h4>
+                                            <p contenteditable="true">GSM - تركيا</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="content">
+                                            <h4 contenteditable="true">شهادة الاندماج والانسجام الاجتماعي والحياة</h4>
+                                            <p contenteditable="true">تركيا</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="content">
+                                            <h4 contenteditable="true">شهادة اللغة التركية (A1)</h4>
+                                            <p contenteditable="true">حصلت عليها في تركيا</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="default-message" id="qualifications-default" style="display: none; text-align: center; color: #666;">لا يوجد مؤهلات علمية</div>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--primary-color); margin-bottom: 15px; text-align: center;">الدورات التدريبية <span class="add-btn" data-section="courses">🏅</span></h4>
+                                <div class="timeline" id="courses-timeline">
+                                    <div class="timeline-item">
+                                        <div class="content">
+                                            <h4 contenteditable="true">دورة محاسبة</h4>
+                                            <p contenteditable="true">غازي عنتاب (2019)</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="content">
+                                            <h4 contenteditable="true">دورة في لغة JAVA</h4>
+                                            <p contenteditable="true">ACCAD (2005)</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="content">
+                                            <h4 contenteditable="true">دورة ICDL</h4>
+                                            <p contenteditable="true">حلب (2002)</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="content">
+                                            <h4 contenteditable="true">دورة في الآلة الكاتبة</h4>
+                                            <p contenteditable="true">حلب (2000)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="default-message" id="courses-default" style="display: none; text-align: center; color: #666;">لا يوجد دورات تدريبية</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="glass-card">
+                        <h3 class="section-title"><i class="fas fa-briefcase"></i> الخبرات العملية والإنجازات</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                            <div>
+                                <h4 style="color: var(--primary-color); margin-bottom: 15px; text-align: center;">الخبرات العملية <span class="add-btn" data-section="experiences">💼</span></h4>
+                                <div class="timeline" id="experiences-timeline">
+                                    <div class="timeline-item">
+                                        <div class="content">
+                                            <h4 contenteditable="true">محاسب - مذبح فروج الأوائل</h4>
+                                            <p contenteditable="true">2001 - 2011</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="content">
+                                            <h4 contenteditable="true">فني صيانة حواسيب</h4>
+                                            <p contenteditable="true">سوفت وير + هاردوير (2012 - 2016)</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="content">
+                                            <h4 contenteditable="true">محاسب - شركة الفرقان</h4>
+                                            <p contenteditable="true">2017 - 2018</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <div class="content">
+                                            <h4 contenteditable="true">محاسب - عباد للألبسة</h4>
+                                            <p contenteditable="true">2018 - 2019</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="default-message" id="experiences-default" style="display: none; text-align: center; color: #666;">لا يوجد خبرات عملية</div>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--primary-color); margin-bottom: 15px; text-align: center;">الإنجازات والمشاريع <span class="add-btn" data-section="achievements">🏆</span></h4>
+                                <div class="timeline" id="achievements-timeline">
+                                    <div class="timeline-item">
+                                        <div class="content">
+                                            <h4 contenteditable="true">تأسيس "الوسيم لصناعة الألبسة"</h4>
+                                            <p contenteditable="true">ملابس أطفال + نسائي + رجالي (2020)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="default-message" id="achievements-default" style="display: none; text-align: center; color: #666;">لا يوجد إنجازات أو مشاريع</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="glass-card">
+                        <h3 class="section-title"><i class="fas fa-tools"></i> المهارات <span class="add-btn" data-section="skills">⭐</span></h3>
+                        <div class="skills-timeline-grid" id="skills-timeline-grid">
+                            <div class="timeline-item">
+                                <div class="content">
+                                    <h4 contenteditable="true">هندسة أوامر الذكاء الاصطناعي</h4>
+                                    <div class="skill-percentage">
+                                        <div class="skill-percentage-segment very-weak filled"></div>
+                                        <div class="skill-percentage-segment weak filled"></div>
+                                        <div class="skill-percentage-segment intermediate filled"></div>
+                                        <div class="skill-percentage-segment good filled"></div>
+                                        <div class="skill-percentage-segment very-good filled"></div>
+                                        <div class="skill-percentage-text" contenteditable="true">90%</div>
+                                    </div>
+                                    <div class="skill-level-text" data-level="جيد">جيد</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="content">
+                                    <h4 contenteditable="true">أتمتة البيانات وإدارتها</h4>
+                                    <div class="skill-percentage">
+                                        <div class="skill-percentage-segment very-weak filled"></div>
+                                        <div class="skill-percentage-segment weak filled"></div>
+                                        <div class="skill-percentage-segment intermediate filled"></div>
+                                        <div class="skill-percentage-segment good filled"></div>
+                                        <div class="skill-percentage-segment very-good filled"></div>
+                                        <div class="skill-percentage-text" contenteditable="true">95%</div>
+                                    </div>
+                                    <div class="skill-level-text" data-level="جيد">جيد</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="content">
+                                    <h4 contenteditable="true">تحليل الجدوى الفنية والتجارية والمالية للمشروعات</h4>
+                                    <div class="skill-percentage">
+                                        <div class="skill-percentage-segment very-weak filled"></div>
+                                        <div class="skill-percentage-segment weak filled"></div>
+                                        <div class="skill-percentage-segment intermediate filled"></div>
+                                        <div class="skill-percentage-segment good filled"></div>
+                                        <div class="skill-percentage-segment very-good filled"></div>
+                                        <div class="skill-percentage-text" contenteditable="true">95%</div>
+                                    </div>
+                                    <div class="skill-level-text" data-level="جيد">جيد</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="content">
+                                    <h4 contenteditable="true">إعداد تقارير دورية</h4>
+                                    <div class="skill-percentage">
+                                        <div class="skill-percentage-segment very-weak filled"></div>
+                                        <div class="skill-percentage-segment weak filled"></div>
+                                        <div class="skill-percentage-segment intermediate filled"></div>
+                                        <div class="skill-percentage-segment good filled"></div>
+                                        <div class="skill-percentage-segment very-good filled"></div>
+                                        <div class="skill-percentage-text" contenteditable="true">100%</div>
+                                    </div>
+                                    <div class="skill-level-text" data-level="جيد">جيد</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="content">
+                                    <h4 contenteditable="true">برامج المحاسبة</h4>
+                                    <div class="skill-percentage">
+                                        <div class="skill-percentage-segment very-weak filled"></div>
+                                        <div class="skill-percentage-segment weak filled"></div>
+                                        <div class="skill-percentage-segment intermediate filled"></div>
+                                        <div class="skill-percentage-segment good filled"></div>
+                                        <div class="skill-percentage-segment very-good filled"></div>
+                                        <div class="skill-percentage-text" contenteditable="true">100%</div>
+                                    </div>
+                                    <div class="skill-level-text" data-level="جيد">جيد</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="content">
+                                    <h4 contenteditable="true">التسويق الإلكتروني</h4>
+                                    <div class="skill-percentage">
+                                        <div class="skill-percentage-segment very-weak filled"></div>
+                                        <div class="skill-percentage-segment weak filled"></div>
+                                        <div class="skill-percentage-segment intermediate filled"></div>
+                                        <div class="skill-percentage-segment good filled"></div>
+                                        <div class="skill-percentage-segment very-good filled"></div>
+                                        <div class="skill-percentage-text" contenteditable="true">85%</div>
+                                    </div>
+                                    <div class="skill-level-text" data-level="جيد">جيد</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="content">
+                                    <h4 contenteditable="true">صيانة الحواسيب</h4>
+                                    <div class="skill-percentage">
+                                        <div class="skill-percentage-segment very-weak filled"></div>
+                                        <div class="skill-percentage-segment weak filled"></div>
+                                        <div class="skill-percentage-segment intermediate filled"></div>
+                                        <div class="skill-percentage-segment good filled"></div>
+                                        <div class="skill-percentage-segment very-good filled"></div>
+                                        <div class="skill-percentage-text" contenteditable="true">90%</div>
+                                    </div>
+                                    <div class="skill-level-text" data-level="جيد">جيد</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="content">
+                                    <h4 contenteditable="true">برامج Office</h4>
+                                    <div class="skill-percentage">
+                                        <div class="skill-percentage-segment very-weak filled"></div>
+                                        <div class="skill-percentage-segment weak filled"></div>
+                                        <div class="skill-percentage-segment intermediate filled"></div>
+                                        <div class="skill-percentage-segment good filled"></div>
+                                        <div class="skill-percentage-segment very-good filled"></div>
+                                        <div class="skill-percentage-text" contenteditable="true">95%</div>
+                                    </div>
+                                    <div class="skill-level-text" data-level="جيد">جيد</div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="content">
+                                    <h4 contenteditable="true">التحليل الفني للبورصة</h4>
+                                    <div class="skill-percentage">
+                                        <div class="skill-percentage-segment very-weak filled"></div>
+                                        <div class="skill-percentage-segment weak filled"></div>
+                                        <div class="skill-percentage-segment intermediate filled"></div>
+                                        <div class="skill-percentage-segment good filled"></div>
+                                        <div class="skill-percentage-segment very-good filled"></div>
+                                        <div class="skill-percentage-text" contenteditable="true">85%</div>
+                                    </div>
+                                    <div class="skill-level-text" data-level="جيد">جيد</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="default-message" id="skills-default" style="display: none; text-align: center; color: #666;">لا يوجد مهارات</div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // تفعيل زر القائمة للشاشات الصغيرة
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainMenu = document.querySelector('.main-menu');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    mainMenu.classList.toggle('active');
+                });
+            }
+            
+            // تفعيل زر الملف الشخصي
+            const profileBtn = document.querySelector('.profile-btn');
+            if (profileBtn) {
+                profileBtn.addEventListener('click', function() {
+                    // هنا يمكنك تنفيذ أي إجراء مرتبط بالملف الشخصي
+                    // مثال: التمرير إلى منطقة معينة في الصفحة
+                    const sidebar = document.querySelector('.sidebar');
+                    if (sidebar) {
+                        sidebar.scrollIntoView({ behavior: 'smooth' });
+                    }
+                    
+                    // أو يمكنك إظهار نافذة منبثقة للملف الشخصي
+                    alert('الملف الشخصي لأحمد الإبراهيم');
+                });
+            }
+            
+            // تفعيل زر تسجيل الخروج
+            const logoutBtn = document.querySelector('.logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    if (confirm('هل أنت متأكد من رغبتك في تسجيل الخروج؟')) {
+                        // هنا يمكنك تنفيذ إجراءات تسجيل الخروج
+                        // مثال: مسح بيانات الجلسة أو إعادة توجيه المستخدم
+                        alert('تم تسجيل الخروج بنجاح');
+                        
+                        // مثال لإعادة تحميل الصفحة
+                        // window.location.reload();
+                        
+                        // أو يمكن إعادة التوجيه إلى صفحة تسجيل الدخول
+                        // window.location.href = 'login.html';
+                    }
+                });
+            }
+            
+            // ## تفعيل زر تحميل السيرة الذاتية ##
+            const downloadBtn = document.querySelector('.download-btn');
+            
+            if (downloadBtn) {
+                // إزالة أي مستمعات أحداث سابقة
+                downloadBtn.replaceWith(downloadBtn.cloneNode(true));
+                
+                // الحصول على الزر بعد إعادة إنشائه
+                const newDownloadBtn = document.querySelector('.download-btn');
+                
+                // إضافة مستمع حدث جديد
+                newDownloadBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // إزالة أي قوائم سابقة
+                    const oldMenus = document.querySelectorAll('.download-options-menu');
+                    oldMenus.forEach(menu => {
+                        if (document.body.contains(menu)) {
+                            document.body.removeChild(menu);
+                        }
+                    });
+                    
+                    // إنشاء قائمة الخيارات لتحميل السيرة
+                    const downloadMenu = document.createElement('div');
+                    downloadMenu.className = 'download-options-menu';
+                    downloadMenu.style.position = 'absolute';
+                    downloadMenu.style.top = '60px';
+                    downloadMenu.style.right = '20px';
+                    downloadMenu.style.backgroundColor = 'white';
+                    downloadMenu.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+                    downloadMenu.style.borderRadius = '5px';
+                    downloadMenu.style.padding = '10px';
+                    downloadMenu.style.zIndex = '1000';
+                    
+                    // إضافة خيارات التحميل
+                    downloadMenu.innerHTML = `
+                        <div style="text-align: center; margin-bottom: 10px; font-weight: bold;">تحميل السيرة الذاتية</div>
+                        <div class="download-option" style="padding: 10px; cursor: pointer; display: flex; align-items: center; border-bottom: 1px solid #eee;" data-type="multi-ar">
+                            <i class="fas fa-file-pdf" style="margin-left: 8px; color: #00a86b;"></i>
+                            <div>
+                                <div style="font-weight: bold;">صفحات متعددة - عربية</div>
+                                <div style="font-size: 12px; color: #666;">مناسبة للطباعة</div>
+                            </div>
+                        </div>
+                        <div class="download-option" style="padding: 10px; cursor: pointer; display: flex; align-items: center; border-bottom: 1px solid #eee;" data-type="multi-en">
+                            <i class="fas fa-file-pdf" style="margin-left: 8px; color: #00a86b;"></i>
+                            <div>
+                                <div style="font-weight: bold;">صفحات متعددة - إنجليزية</div>
+                                <div style="font-size: 12px; color: #666;">مناسبة للطباعة</div>
+                            </div>
+                        </div>
+                        <div class="download-option" style="padding: 10px; cursor: pointer; display: flex; align-items: center; border-bottom: 1px solid #eee;" data-type="single-ar">
+                            <i class="fas fa-file-pdf" style="margin-left: 8px; color: #00a86b;"></i>
+                            <div>
+                                <div style="font-weight: bold;">صفحة واحدة - عربية</div>
+                                <div style="font-size: 12px; color: #666;">مناسبة للمشاركة</div>
+                            </div>
+                        </div>
+                        <div class="download-option" style="padding: 10px; cursor: pointer; display: flex; align-items: center; border-bottom: 1px solid #eee;" data-type="single-en">
+                            <i class="fas fa-file-pdf" style="margin-left: 8px; color: #00a86b;"></i>
+                            <div>
+                                <div style="font-weight: bold;">صفحة واحدة - إنجليزية</div>
+                                <div style="font-size: 12px; color: #666;">مناسبة للمشاركة</div>
+                            </div>
+                        </div>
+                        <div class="download-option" style="padding: 10px; cursor: pointer; display: flex; align-items: center; border-bottom: 1px solid #eee;" data-type="image">                            <i class="fas fa-image" style="margin-left: 8px; color: #00a86b;"></i>                            <div>                                <div style="font-weight: bold;">تحميل كصورة</div>                                <div style="font-size: 12px; color: #666;">صورة عالية الجودة</div>                            </div>                        </div>                        <div class="download-option" style="padding: 10px; cursor: pointer; display: flex; align-items: center; border-bottom: 1px solid #eee;" data-type="html">                            <i class="fas fa-code" style="margin-left: 8px; color: #00a86b;"></i>                            <div>                                <div style="font-weight: bold;">تحميل كملف HTML</div>                                <div style="font-size: 12px; color: #666;">يمكن فتحه في أي متصفح</div>                            </div>                        </div>                        <div class="download-option" style="padding: 10px; cursor: pointer; display: flex; align-items: center;" data-type="markdown-pdf">                            <i class="fas fa-file-pdf" style="margin-left: 8px; color: #00a86b;"></i>                            <div>                                <div style="font-weight: bold;">PDF من Markdown</div>                                <div style="font-size: 12px; color: #666;">تحويل عبر موقع Markdown</div>                            </div>                        </div>
+                    `;
+                    
+                    // إضافة القائمة للصفحة
+                    document.body.appendChild(downloadMenu);
+                    
+                    // إغلاق القائمة عند النقر في أي مكان آخر
+                    document.addEventListener('click', function closeMenu(event) {
+                        if (!downloadMenu.contains(event.target) && event.target !== newDownloadBtn) {
+                            if (document.body.contains(downloadMenu)) {
+                                document.body.removeChild(downloadMenu);
+                            }
+                            document.removeEventListener('click', closeMenu);
+                        }
+                    });
+                    
+                    // إضافة تفاعل للخيارات
+                    const downloadOptions = downloadMenu.querySelectorAll('.download-option');
+                    downloadOptions.forEach(option => {
+                        option.addEventListener('click', function() {
+                            const type = this.getAttribute('data-type');
+                            
+                            if (document.body.contains(downloadMenu)) {
+                                document.body.removeChild(downloadMenu);
+                            }
+                            
+                            // إخفاء شريط التنقل وعناصر واجهة المستخدم
+                            const navbar = document.querySelector('.navbar');
+                            const densityControls = document.querySelector('.density-controls');
+                            const exportButtons = document.querySelector('.export-buttons');
+                            
+                            if (navbar) navbar.style.display = 'none';
+                            if (densityControls) densityControls.style.display = 'none';
+                            if (exportButtons) exportButtons.style.display = 'none';
+                            document.body.style.paddingTop = '0';
+                            
+                            // تطبيق التحميل
+                            if (window.EnhancedPDFExporter) {
+                                if (type === 'multi-ar') {
+                                    window.EnhancedPDFExporter.exportMultiPageArabic();
+                                } else if (type === 'multi-en') {
+                                    window.EnhancedPDFExporter.exportMultiPageEnglish();
+                                } else if (type === 'single-ar') {
+                                    window.EnhancedPDFExporter.exportSinglePageArabic();
+                                } else if (type === 'single-en') {
+                                    window.EnhancedPDFExporter.exportSinglePageEnglish();
+                                } else if (type === 'image') {
+                                    // تعديل خاص لتصدير الصورة
+                                    exportAsImage();
+                                }
+                                
+                                // إعادة إظهار العناصر بعد التحميل
+                                setTimeout(() => {
+                                    if (navbar) navbar.style.display = 'flex';
+                                    if (densityControls) densityControls.style.display = 'flex';
+                                    if (exportButtons) exportButtons.style.display = 'block';
+                                    document.body.style.paddingTop = '60px';
+                                }, 1500);
+                            }
+                        });
+                    });
+                });
+                
+                // إضافة وظيفة مخصصة لتصدير الصفحة كصورة
+                function exportAsImage() {    // إظهار رسالة للمستخدم    const message = document.createElement('div');    message.className = 'download-message';    message.textContent = 'جاري تحويل الصفحة إلى صورة...';    document.body.appendChild(message);        // التأكد من إخفاء عناصر واجهة المستخدم    const navbar = document.querySelector('.navbar');    const densityControls = document.querySelector('.density-controls');    const exportButtons = document.querySelector('.export-buttons');        // حفظ الحالة الأصلية لاستعادتها لاحقًا    const originalNavbarDisplay = navbar ? window.getComputedStyle(navbar).display : 'flex';    const originalDensityDisplay = densityControls ? window.getComputedStyle(densityControls).display : 'flex';    const originalExportDisplay = exportButtons ? window.getComputedStyle(exportButtons).display : 'block';    const originalPaddingTop = document.body.style.paddingTop;        // إخفاء العناصر    if (navbar) navbar.style.display = 'none';    if (densityControls) densityControls.style.display = 'none';    if (exportButtons) exportButtons.style.display = 'none';    document.body.style.paddingTop = '0';        // العثور على الصورة الشخصية والاستعداد لها    const profileImg = document.querySelector('.profile-image img');    let profileImgSrc = '';    if (profileImg) {        // حفظ مصدر الصورة الأصلي        profileImgSrc = profileImg.src;                // التحقق مما إذا كانت الصورة من مصدر خارجي        if (profileImgSrc.startsWith('http') && !profileImgSrc.includes(window.location.hostname)) {            // استبدالها مؤقتًا بصورة افتراضية لتجنب مشاكل CORS            profileImg.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTIwIDEyMCIgZmlsbD0ibm9uZSI+CiAgPGNpcmNsZSBjeD0iNjAiIGN5PSI2MCIgcj0iNjAiIGZpbGw9IiNlMWU1ZTgiLz4KICA8Y2lyY2xlIGN4PSI2MCIgY3k9IjQ1IiByPSIyMCIgZmlsbD0iI2FhYWFhYSIvPgogIDxwYXRoIGQ9Ik0yMCA5NUMzMCA2NSA5MCA2NSAxMDAgOTUiIGZpbGw9IiNhYWFhYWEiLz4KPC9zdmc+Cg==';        }    }        // تأخير قصير للتأكد من تطبيق التغييرات    setTimeout(() => {        try {            // تصدير الصفحة كصورة باستخدام html2canvas            const content = document.querySelector('.main-layout');                        // استبعاد الأقسام الخاصة بالواجهة            const elementsToHide = document.querySelectorAll('.navbar, .density-controls, .export-buttons, .menu-toggle');            const originalVisibility = [];                        // حفظ حالات العرض الأصلية            elementsToHide.forEach(el => {                originalVisibility.push(el.style.display);                el.style.display = 'none';            });                        html2canvas(content, {                scale: 2, // جودة أعلى                useCORS: true, // السماح بالوصول للموارد الخارجية                allowTaint: false, // منع تلويث الكانفاس                backgroundColor: '#f0f9f4', // لون خلفية مطابق                scrollX: 0,                scrollY: -window.scrollY, // تعويض التمرير                windowWidth: document.documentElement.offsetWidth,                windowHeight: document.documentElement.offsetHeight,                foreignObjectRendering: false, // تعطيل العناصر الخارجية                removeContainer: true, // إزالة الحاوية المؤقتة                logging: false, // تعطيل التسجيل للتحسين                imageTimeout: 0, // إلغاء مهلة تحميل الصورة                onclone: function(clonedDoc) {                    // معالجة النسخة المستنسخة                    const clonedNavs = clonedDoc.querySelectorAll('.navbar, .density-controls, .export-buttons, .menu-toggle');                    clonedNavs.forEach(nav => {                        if (nav) nav.style.display = 'none';                    });                    clonedDoc.body.style.paddingTop = '0';                                        // معالجة الصور                    const images = clonedDoc.querySelectorAll('img[src^="http"]');                    images.forEach(img => {                        // تجنب مشاكل CORS                        img.setAttribute('crossorigin', 'anonymous');                    });                }            }).then(canvas => {                try {                    // تحويل Canvas إلى صورة وتحميلها                    const imgData = canvas.toDataURL('image/png');                    const link = document.createElement('a');                    link.download = 'ahmed-cv-' + new Date().toISOString().slice(0, 10) + '.png';                    link.href = imgData;                    link.click();                                        // إظهار رسالة نجاح                    message.textContent = 'تم تحميل الصورة بنجاح!';                } catch (e) {                    console.error("خطأ في تحويل الصورة:", e);                    message.textContent = 'حدث خطأ أثناء تحويل الصورة';                    message.classList.add('error');                                        // محاولة تصدير بديلة كحل بديل                    try {                        const printWindow = window.open('', '_blank');                        if (printWindow) {                            printWindow.document.write('<html><head><title>تصدير السيرة الذاتية</title>');                            printWindow.document.write('<style>body { margin: 0; padding: 0; background-color: #f0f9f4; }</style>');                            printWindow.document.write('</head><body>');                            printWindow.document.write('<div style="text-align:center; padding: 20px;">');                            printWindow.document.write('<p>لم نتمكن من تحميل الصورة تلقائيًا</p>');                            printWindow.document.write('<p>يرجى استخدام وظيفة "حفظ الصفحة كصورة" من متصفحك</p>');                            printWindow.document.write('</div>');                            printWindow.document.write('<div style="text-align:center;">');                            printWindow.document.write(content.outerHTML);                            printWindow.document.write('</div>');                            printWindow.document.write('</body></html>');                            printWindow.document.close();                        }                    } catch (pe) {                        console.error("فشلت محاولة الطباعة البديلة:", pe);                    }                }                                // استعادة العناصر والصورة الشخصية                if (profileImg && profileImgSrc) {                    profileImg.src = profileImgSrc;                }                                // استعادة حالات العرض الأصلية                elementsToHide.forEach((el, index) => {                    el.style.display = originalVisibility[index] || '';                });                                // إعادة إظهار عناصر واجهة المستخدم                if (navbar) navbar.style.display = originalNavbarDisplay;                if (densityControls) densityControls.style.display = originalDensityDisplay;                if (exportButtons) exportButtons.style.display = originalExportDisplay;                document.body.style.paddingTop = originalPaddingTop || '60px';                                setTimeout(() => {                    if (document.body.contains(message)) {                        document.body.removeChild(message);                    }                }, 1500);            }).catch(error => {                console.error("خطأ في تصدير الصورة:", error);                message.textContent = 'حدث خطأ أثناء تصدير الصورة';                message.classList.add('error');                                // استعادة الصورة الأصلية                if (profileImg && profileImgSrc) {                    profileImg.src = profileImgSrc;                }                                // إعادة إظهار عناصر واجهة المستخدم                if (navbar) navbar.style.display = originalNavbarDisplay;                if (densityControls) densityControls.style.display = originalDensityDisplay;                if (exportButtons) exportButtons.style.display = originalExportDisplay;                document.body.style.paddingTop = originalPaddingTop || '60px';                                setTimeout(() => {                    if (document.body.contains(message)) {                        document.body.removeChild(message);                    }                }, 1500);            });        } catch (error) {            console.error("خطأ عام في تصدير الصورة:", error);            message.textContent = 'حدث خطأ غير متوقع أثناء تصدير الصورة';            message.classList.add('error');                        // استعادة الصورة الأصلية            if (profileImg && profileImgSrc) {                profileImg.src = profileImgSrc;            }                        // إعادة إظهار عناصر واجهة المستخدم            if (navbar) navbar.style.display = originalNavbarDisplay;            if (densityControls) densityControls.style.display = originalDensityDisplay;            if (exportButtons) exportButtons.style.display = originalExportDisplay;            document.body.style.paddingTop = originalPaddingTop || '60px';                        setTimeout(() => {                if (document.body.contains(message)) {                    document.body.removeChild(message);                }            }, 1500);        }    }, 500);
+                }
+            }
+            
+            // تفعيل وظيفة تغيير الصورة الشخصية عند النقر المزدوج
+            const profileImage = document.querySelector('.sidebar .profile-image');
+            if (profileImage) {
+                profileImage.style.cursor = 'pointer';
+                
+                profileImage.addEventListener('dblclick', function() {
+                    const input = document.createElement('input');
+                    input.type = 'file';
+                    input.accept = 'image/*';
+                    
+                    input.onchange = function() {
+                        handleImageUpload(input.files[0], profileImage, true);
+                    };
+                    
+                    input.click();
+                });
+                
+                // Load saved profile image
+                const savedProfileImage = localStorage.getItem('profileImage');
+                if (savedProfileImage) {
+                    const img = profileImage.querySelector('img') || document.createElement('img');
+                    img.src = savedProfileImage;
+                    img.alt = 'الصورة الشخصية';
+                    img.style.width = '100%';
+                    img.style.height = '100%';
+                    img.style.objectFit = 'cover';
+                    img.style.borderRadius = '50%';
+                    img.style.border = '3px solid #fff';
+                    profileImage.innerHTML = '';
+                    profileImage.appendChild(img);
+                }
+            }
+            
+            // تحديد اللون الافتراضي للموقع
+            function setDefaultColor() {
+                const root = document.documentElement;
+                const defaultColor = '#00a86b'; // اللون الأخضر الافتراضي
+                
+                // استرجاع اللون المحفوظ من التخزين المحلي
+                const savedColor = localStorage.getItem('selectedColor');
+                if (savedColor) {
+                    root.style.setProperty('--primary-color', savedColor);
+                    
+                    const rgbColor = hexToRgb(savedColor);
+                    if (rgbColor) {
+                        root.style.setProperty('--primary-light', `rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, 0.1)`);
+                    }
+                } else {
+                    // تطبيق اللون الافتراضي إذا لم يكن هناك لون محفوظ
+                    root.style.setProperty('--primary-color', defaultColor);
+                    root.style.setProperty('--primary-light', 'rgba(0, 168, 107, 0.1)');
+                }
+            }
+            
+            // إضافة وظيفة التحكم بكثافة المحتوى
+            function initializeDensityControls() {
+                const densityBtns = document.querySelectorAll('.density-btn');
+                
+                // استرجاع إعداد الكثافة من التخزين المحلي
+                const savedDensity = localStorage.getItem('contentDensity') || 'medium';
+                document.body.className = `density-${savedDensity}`;
+                
+                // تفعيل الزر المناسب
+                densityBtns.forEach(btn => {
+                    if (btn.id === `density-${savedDensity}`) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+                
+                // إضافة مستمعات الأحداث للأزرار
+                densityBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const density = this.id.split('-')[1]; // استخراج high/medium/low
+                        
+                        // تطبيق الكثافة الجديدة
+                        document.body.className = '';
+                        document.body.classList.add(`density-${density}`);
+                        
+                        // تحديث الزر النشط
+                        densityBtns.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // حفظ الإعداد في التخزين المحلي
+                        localStorage.setItem('contentDensity', density);
+                    });
+                });
+            }
+            
+            // وظيفة مساعدة لتحويل لون Hex إلى RGB
+            function hexToRgb(hex) {
+                const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+                hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+                    return r + r + g + g + b + b;
+                });
+                
+                const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                return result ? {
+                    r: parseInt(result[1], 16),
+                    g: parseInt(result[2], 16),
+                    b: parseInt(result[3], 16)
+                } : null;
+            }
+            
+            // تفعيل تحديث النسب لجميع المهارات واللغات الحالية والجديدة
+            function applyPercentageUpdates() {
+                // جميع عناصر المهارات واللغات
+                const allItems = document.querySelectorAll('.skills-timeline-grid .timeline-item, #languages-timeline-list .timeline-item');
+                
+                allItems.forEach(item => {
+                    const percentText = item.querySelector('.skill-percentage-text');
+                    if (!percentText) return;
+                    
+                    // إزالة المستمعات القديمة لمنع التكرار
+                    percentText.removeEventListener('input', handlePercentageChange);
+                    percentText.removeEventListener('blur', handlePercentageChange);
+                    
+                    // إضافة مستمعات جديدة
+                    percentText.addEventListener('input', handlePercentageChange);
+                    percentText.addEventListener('blur', handlePercentageChange);
+                    
+                    // تحديث أولي
+                    updateItemAppearance(item);
+                });
+            }
+            
+            // معالج تغيير النسبة
+            function handlePercentageChange(event) {
+                const item = event.target.closest('.timeline-item');
+                updateItemAppearance(item);
+            }
+            
+            // تحديث مظهر العنصر (النسبة، المؤشر، النص) وفقًا للنسبة المئوية
+            function updateItemAppearance(item) {
+                const percentText = item.querySelector('.skill-percentage-text');
+                const levelText = item.querySelector('.skill-level-text');
+                const segments = item.querySelectorAll('.skill-percentage-segment');
+                
+                // استخراج الرقم وتصحيحه
+                let value = percentText.textContent.replace(/\D/g, '');
+                value = Math.max(0, Math.min(100, parseInt(value || 0)));
+                percentText.textContent = value + '%';
+                
+                // تحديد المستوى واللون
+                let level, color;
+                if (value <= 20) {
+                    level = 'ضعيف';
+                    color = '#e74c3c';
+                } else if (value <= 40) {
+                    level = 'مبتدئ';
+                    color = '#ff9800';
+                } else if (value <= 60) {
+                    level = 'متوسط';
+                    color = '#ffc107';
+                } else if (value <= 80) {
+                    level = 'جيد';
+                    color = '#8bc34a';
+                } else {
+                    level = 'ممتاز';
+                    color = '#00cc66';
+                }
+                
+                // تحديث النص واللون
+                levelText.textContent = level;
+                levelText.style.color = color;
+                levelText.setAttribute('data-level', level);
+                
+                // تحديث شرائح المؤشر
+                segments.forEach((segment, index) => {
+                    const threshold = (index + 1) * 20;
+                    
+                    // تعديل للقيم المنخفضة - إظهار المقطع الأول على الأقل للقيم > 0
+                    if (index === 0 && value > 0 && value < 20) {
+                        segment.classList.add('filled');
+                        segment.classList.remove('empty');
+                        segment.style.backgroundColor = color; // اللون الأحمر للضعيف
+                    } else if (value >= threshold) {
+                        segment.classList.add('filled');
+                        segment.classList.remove('empty');
+                        segment.style.backgroundColor = color;
+                    } else {
+                        segment.classList.remove('filled');
+                        segment.classList.add('empty');
+                        segment.style.backgroundColor = '#eee';
+                    }
+                });
+            }
+            
+            // تحديث النقاط التفاعلية للحذف
+            function updateDeletionDots() {
+                // المهارات
+                const skillsTimeline = document.getElementById('skills-timeline-grid');
+                const skillItems = skillsTimeline.querySelectorAll('.timeline-item');
+                updateDotsBehavior(skillsTimeline, skillItems);
+                
+                // اللغات
+                const languagesTimeline = document.getElementById('languages-timeline-list');
+                const languageItems = languagesTimeline.querySelectorAll('.timeline-item');
+                updateDotsBehavior(languagesTimeline, languageItems);
+            }
+            
+            function updateDotsBehavior(timeline, items) {
+                items.forEach(item => {
+                    item.removeEventListener('click', handleDotClick);
+                    item.addEventListener('click', handleDotClick);
+                });
+                
+                // إخفاء نقطة الحذف إذا كان هناك عنصر واحد فقط
+                if (items.length <= 1) {
+                    items[0].style.pointerEvents = 'none';
+                    items[0].style.opacity = '0.7';
+                } else {
+                    items.forEach(item => {
+                        item.style.pointerEvents = 'auto';
+                        item.style.opacity = '1';
+                    });
+                }
+            }
+            
+            function handleDotClick(event) {
+                const item = this;
+                const timeline = item.parentElement;
+                const items = timeline.querySelectorAll('.timeline-item');
+                
+                // حساب ما إذا كان النقر على نقطة الحذف
+                const rect = item.getBoundingClientRect();
+                const x = event.clientX - rect.right + 5;
+                const y = event.clientY - rect.top;
+                
+                if (x >= -5 && x <= 5 && y >= 0 && y <= 10 && items.length > 1) {
+                    timeline.removeChild(item);
+                    
+                    // إظهار الرسالة الافتراضية إذا لم يتبق عناصر
+                    if (timeline.children.length === 0) {
+                        const sectionId = timeline.id.split('-')[0];
+                        const defaultMessage = document.getElementById(sectionId + '-default');
+                        if (defaultMessage) defaultMessage.style.display = 'block';
+                    }
+                    
+                    // تحديث سلوك النقاط بعد الحذف
+                    updateDotsBehavior(timeline, timeline.querySelectorAll('.timeline-item'));
+                }
+            }
+            
+            // تحسين نظام الحذف في جميع الأقسام
+            function setupDeletionSystem() {
+                // أولاً إزالة جميع نقاط الحذف الموجودة
+                document.querySelectorAll('.delete-dot').forEach(dot => dot.remove());
+                
+                // إضافة نقاط الحذف لجميع الأقسام
+                const allSections = [
+                    { selector: '#qualifications-timeline .timeline-item', name: 'المؤهل العلمي' },
+                    { selector: '#courses-timeline .timeline-item', name: 'الدورة التدريبية' },
+                    { selector: '#experiences-timeline .timeline-item', name: 'الخبرة العملية' },
+                    { selector: '#achievements-timeline .timeline-item', name: 'الإنجاز' },
+                    { selector: '#languages-timeline-list .timeline-item', name: 'اللغة' },
+                    { selector: '#hobbies-timeline-list .timeline-item', name: 'الهواية' },
+                    { selector: '#skills-timeline-grid .timeline-item', name: 'المهارة' }
+                ];
+                
+                allSections.forEach(section => {
+                    const items = document.querySelectorAll(section.selector);
+                    
+                    // لا نضيف زر حذف إذا كان هناك عنصر واحد فقط
+                    if (items.length <= 1) return;
+                    
+                    // إضافة زر حذف لكل عنصر
+                    items.forEach(item => {
+                        const deleteButton = document.createElement('div');
+                        deleteButton.className = 'delete-dot';
+                        deleteButton.title = `حذف ${section.name}`;
+                        
+                        deleteButton.onclick = function(e) {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            
+                            if (confirm(`هل تريد حذف ${section.name}؟`)) {
+                                const parent = item.parentElement;
+                                parent.removeChild(item);
+                                
+                                // إذا تم حذف آخر عنصر، نعرض رسالة افتراضية
+                                if (parent.children.length === 0) {
+                                    const sectionId = parent.id.split('-')[0];
+                                    const defaultMessage = document.getElementById(sectionId + '-default');
+                                    if (defaultMessage) defaultMessage.style.display = 'block';
+                                }
+                                
+                                // إعادة تطبيق نظام الحذف
+                                setupDeletionSystem();
+                            }
+                        };
+                        
+                        item.appendChild(deleteButton);
+                    });
+                });
+            }
+            
+            // إضافة مستمع للزر "إضافة مهارة"
+            document.querySelector('.add-btn[data-section="skills"]').addEventListener('click', function() {
+                const grid = document.getElementById('skills-timeline-grid');
+                const defaultMessage = document.getElementById('skills-default');
+                const newItem = document.createElement('div');
+                newItem.className = 'timeline-item';
+                newItem.innerHTML = `
+                    <div class="content">
+                        <h4 contenteditable="true">مهارة جديدة</h4>
+                        <div class="skill-percentage">
+                            <div class="skill-percentage-segment very-weak filled" style="background-color: #00cc66;"></div>
+                            <div class="skill-percentage-segment weak filled" style="background-color: #00cc66;"></div>
+                            <div class="skill-percentage-segment intermediate filled" style="background-color: #00cc66;"></div>
+                            <div class="skill-percentage-segment good filled" style="background-color: #00cc66;"></div>
+                            <div class="skill-percentage-segment very-good filled" style="background-color: #00cc66;"></div>
+                            <div class="skill-percentage-text" contenteditable="true">100%</div>
+                        </div>
+                        <div class="skill-level-text" data-level="ممتاز" style="color: #00cc66;">ممتاز</div>
+                    </div>
+                `;
+                grid.appendChild(newItem);
+                defaultMessage.style.display = 'none';
+                
+                // تطبيق التحديثات على العنصر الجديد
+                applyPercentageUpdates();
+                // إعادة تطبيق نظام الحذف
+                setTimeout(setupDeletionSystem, 100);
+            });
+            
+            // إضافة مستمع للزر "إضافة لغة"
+            document.querySelector('.add-btn[data-section="languages"]').addEventListener('click', function() {
+                const list = document.getElementById('languages-timeline-list');
+                const defaultMessage = document.getElementById('languages-default');
+                const newItem = document.createElement('div');
+                newItem.className = 'timeline-item';
+                newItem.innerHTML = `
+                    <div class="content">
+                        <h4 contenteditable="true">لغة جديدة</h4>
+                        <div class="skill-percentage">
+                            <div class="skill-percentage-segment very-weak filled" style="background-color: #00cc66;"></div>
+                            <div class="skill-percentage-segment weak filled" style="background-color: #00cc66;"></div>
+                            <div class="skill-percentage-segment intermediate filled" style="background-color: #00cc66;"></div>
+                            <div class="skill-percentage-segment good filled" style="background-color: #00cc66;"></div>
+                            <div class="skill-percentage-segment very-good filled" style="background-color: #00cc66;"></div>
+                            <div class="skill-percentage-text" contenteditable="true">100%</div>
+                        </div>
+                        <div class="skill-level-text" data-level="ممتاز" style="color: #00cc66;">ممتاز</div>
+                    </div>
+                `;
+                list.appendChild(newItem);
+                defaultMessage.style.display = 'none';
+                
+                // تطبيق التحديثات على العنصر الجديد
+                applyPercentageUpdates();
+                // إعادة تطبيق نظام الحذف
+                setTimeout(setupDeletionSystem, 100);
+            });
+            
+            // إضافة مستمع للزر "إضافة مؤهل علمي"
+            document.querySelector('.add-btn[data-section="qualifications"]').addEventListener('click', function() {
+                const timeline = document.getElementById('qualifications-timeline');
+                const defaultMessage = document.getElementById('qualifications-default');
+                const newItem = document.createElement('div');
+                newItem.className = 'timeline-item';
+                newItem.innerHTML = `
+                    <div class="content">
+                        <h4 contenteditable="true">مؤهل علمي جديد</h4>
+                        <p contenteditable="true">وصف المؤهل الجديد</p>
+                    </div>
+                `;
+                timeline.appendChild(newItem);
+                if (defaultMessage) defaultMessage.style.display = 'none';
+                
+                // إعطاء وقت للعنصر الجديد ليضاف ثم إضافة نقطة الحذف له
+                setTimeout(() => {
+                    setupDeletionSystem();
+                }, 100);
+            });
+            
+            document.querySelector('.add-btn[data-section="courses"]').addEventListener('click', function() {
+                const timeline = document.getElementById('courses-timeline');
+                const defaultMessage = document.getElementById('courses-default');
+                const newItem = document.createElement('div');
+                newItem.className = 'timeline-item';
+                newItem.innerHTML = `
+                    <div class="content">
+                        <h4 contenteditable="true">دورة تدريبية جديدة</h4>
+                        <p contenteditable="true">وصف الدورة الجديدة</p>
+                    </div>
+                `;
+                timeline.appendChild(newItem);
+                if (defaultMessage) defaultMessage.style.display = 'none';
+                
+                // إعطاء وقت للعنصر الجديد ليضاف ثم إضافة نقطة الحذف له
+                setTimeout(() => {
+                    setupDeletionSystem();
+                }, 100);
+            });
+            
+            document.querySelector('.add-btn[data-section="experiences"]').addEventListener('click', function() {
+                const timeline = document.getElementById('experiences-timeline');
+                const defaultMessage = document.getElementById('experiences-default');
+                const newItem = document.createElement('div');
+                newItem.className = 'timeline-item';
+                newItem.innerHTML = `
+                    <div class="content">
+                        <h4 contenteditable="true">خبرة عملية جديدة</h4>
+                        <p contenteditable="true">وصف الخبرة الجديدة</p>
+                    </div>
+                `;
+                timeline.appendChild(newItem);
+                if (defaultMessage) defaultMessage.style.display = 'none';
+                
+                // إعطاء وقت للعنصر الجديد ليضاف ثم إضافة نقطة الحذف له
+                setTimeout(() => {
+                    setupDeletionSystem();
+                }, 100);
+            });
+            
+            document.querySelector('.add-btn[data-section="achievements"]').addEventListener('click', function() {
+                const timeline = document.getElementById('achievements-timeline');
+                const defaultMessage = document.getElementById('achievements-default');
+                const newItem = document.createElement('div');
+                newItem.className = 'timeline-item';
+                newItem.innerHTML = `
+                    <div class="content">
+                        <h4 contenteditable="true">إنجاز جديد</h4>
+                        <p contenteditable="true">وصف الإنجاز الجديد</p>
+                    </div>
+                `;
+                timeline.appendChild(newItem);
+                if (defaultMessage) defaultMessage.style.display = 'none';
+                
+                // إعطاء وقت للعنصر الجديد ليضاف ثم إضافة نقطة الحذف له
+                setTimeout(() => {
+                    setupDeletionSystem();
+                }, 100);
+            });
+            
+            document.querySelector('.add-btn[data-section="hobbies"]').addEventListener('click', function() {
+                const timeline = document.getElementById('hobbies-timeline-list');
+                const defaultMessage = document.getElementById('hobbies-default');
+                const newItem = document.createElement('div');
+                newItem.className = 'timeline-item';
+                newItem.innerHTML = `
+                    <div class="content">
+                        <h4 contenteditable="true">هواية جديدة</h4>
+                    </div>
+                `;
+                timeline.appendChild(newItem);
+                if (defaultMessage) defaultMessage.style.display = 'none';
+                
+                // إعطاء وقت للعنصر الجديد ليضاف ثم إضافة نقطة الحذف له
+                setTimeout(() => {
+                    setupDeletionSystem();
+                }, 100);
+            });
+            
+            // تفعيل جميع وظائف التحديث عند تحميل الصفحة
+            applyPercentageUpdates();
+            setupDeletionSystem();
+            setDefaultColor();
+            initializeDensityControls();
+            
+            // إضافة مستمع للتحديث المستمر لكل تغيير في المحتوى
+            document.addEventListener('input', function(event) {
+                if (event.target.className === 'skill-percentage-text') {
+                    const item = event.target.closest('.timeline-item');
+                    if (item) updateItemAppearance(item);
+                }
+            }, true);
+            
+                        // تحديث آلية الحذف باستخدام MutationObserver (بديل عن DOMSubtreeModified المهمل)            let updateTimeout = null;            const contentObserver = new MutationObserver(function(mutations) {                clearTimeout(updateTimeout);                updateTimeout = setTimeout(setupDeletionSystem, 500);            });                        // تكوين مراقب التغييرات للمحتوى            contentObserver.observe(document.body, {                 childList: true,                 subtree: true,                attributes: false,                characterData: false            });
+            
+                        // حل مشكلة الصور عند تصدير الصفحة            function prepareImagesForExport() {                // توفير ترميز SVG لصورة الملف الشخصي الاحتياطية عندما تكون صورة الملف الشخصي الحقيقية غير متاحة بسبب قيود CORS                const defaultProfileImageSVG = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiB2aWV3Qm94PSIwIDAgMTIwIDEyMCI+PGNpcmNsZSBjeD0iNjAiIGN5PSI2MCIgcj0iNTUiIGZpbGw9IiMwMGE4NmIiIC8+PHRleHQgeD0iNjAiIHk9IjY1IiBmb250LXNpemU9IjQwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSJ3aGl0ZSI+QTwvdGV4dD48L3N2Zz4=';                                // جميع الصور في الصفحة                const images = document.querySelectorAll('img');                                // معالجة كل صورة بشكل منفصل                images.forEach(img => {                    // إضافة سمة crossorigin للسماح باستخدام الصور عبر المجالات                    img.setAttribute('crossorigin', 'anonymous');                                        // إضافة معالج أخطاء للصور                    img.onerror = function() {                        // الاحتفاظ بالمصدر الأصلي                        const originalSrc = this.src;                                                // استخدام صورة بديلة إذا فشل تحميل الصورة الأصلية                        if (this.classList.contains('profile-image') || this.closest('.profile-image')) {                            this.src = defaultProfileImageSVG;                        }                                                console.log('تم استبدال صورة غير متوفرة بصورة افتراضية:', originalSrc);                    };                });                                return true;            }                        // إضافة زر لتفعيل خاصية معالجة الصور            document.addEventListener('DOMContentLoaded', function() {                prepareImagesForExport();            });
+        });
+    </script>
+    
+    <!-- سكريبت لتفعيل خاصية الحذف بالنقر المزدوج -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // تفعيل ميزة النقر المزدوج للحذف
+            enableDoubleClickDelete();
+            
+            // تفعيل ميزة النقر المزدوج بعد إضافة عناصر جديدة
+            document.querySelectorAll('.add-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    setTimeout(enableDoubleClickDelete, 300);
+                });
+            });
+            
+            function enableDoubleClickDelete() {
+                // الأقسام التي نريد تفعيل ميزة الحذف فيها
+                const sections = [
+                    { id: 'qualifications-timeline', defaultId: 'qualifications-default', name: 'المؤهل العلمي' },
+                    { id: 'courses-timeline', defaultId: 'courses-default', name: 'الدورة التدريبية' },
+                    { id: 'experiences-timeline', defaultId: 'experiences-default', name: 'الخبرة العملية' },
+                    { id: 'achievements-timeline', defaultId: 'achievements-default', name: 'الإنجاز' },
+                    { id: 'languages-timeline-list', defaultId: 'languages-default', name: 'اللغة' },
+                    { id: 'hobbies-timeline-list', defaultId: 'hobbies-default', name: 'الهواية' },
+                    { id: 'skills-timeline-grid', defaultId: 'skills-default', name: 'المهارة' }
+                ];
+                
+                sections.forEach(function(section) {
+                    const container = document.getElementById(section.id);
+                    if (!container) return;
+                    
+                    const items = container.querySelectorAll('.timeline-item');
+                    
+                    items.forEach(function(item) {
+                        // إزالة المستمع السابق لتجنب التكرار
+                        item.removeEventListener('dblclick', handleDoubleClick);
+                        
+                        // إضافة مستمع للنقر المزدوج
+                        item.addEventListener('dblclick', handleDoubleClick);
+                        
+                        // معالج النقر المزدوج
+                        function handleDoubleClick(e) {
+                            // منع حذف العنصر إذا كان النقر على محتوى قابل للتحرير
+                            if (e.target.hasAttribute('contenteditable')) {
+                                return;
+                            }
+                            
+                            // منع حذف العنصر الوحيد
+                            if (items.length <= 1) {
+                                alert('لا يمكن حذف العنصر الوحيد في هذا القسم');
+                                return;
+                            }
+                            
+                            // تأكيد الحذف
+                            if (confirm('هل تريد حذف هذا ' + section.name + '؟')) {
+                                container.removeChild(item);
+                                
+                                // عرض رسالة إذا كان القسم فارغًا
+                                if (container.querySelectorAll('.timeline-item').length === 0) {
+                                    const defaultMsg = document.getElementById(section.defaultId);
+                                    if (defaultMsg) defaultMsg.style.display = 'block';
+                                }
+                                
+                                // إعادة تفعيل الحذف بالنقر المزدوج
+                                setTimeout(enableDoubleClickDelete, 100);
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+    
+    <!-- سكريبت لتحسين تجربة تعديل البيانات -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // إضافة توضيح عند التحويم على العناصر القابلة للتعديل
+            const editableElements = document.querySelectorAll('[contenteditable="true"]');
+            
+            editableElements.forEach(function(element) {
+                // إضافة سمة بيانات للمساعدة البصرية
+                element.setAttribute('title', 'انقر للتعديل');
+                
+                // حفظ المحتوى الأصلي
+                element.setAttribute('data-original', element.innerHTML.trim());
+                
+                // تطبيق المؤثرات عند الدخول والخروج من النص
+                element.addEventListener('focus', function() {
+                    this.classList.add('editing');
+                });
+                
+                element.addEventListener('blur', function() {
+                    this.classList.remove('editing');
+                    
+                    // إذا كان النص فارغًا، استعادة المحتوى الأصلي
+                    if (this.innerHTML.trim() === '') {
+                        this.innerHTML = this.getAttribute('data-original');
+                    }
+                });
+            });
+        });
+    </script>
+    
+    <!-- تحميل الأنظمة المحسنة -->
+    <script src="pdf-export-fixed.js"></script>
+    <script src="cv-templates-advanced.js"></script>
+    
+    <!-- أنماط CSS للقوالب المختلفة -->
+    <style>
+        /* أنماط القوالب المختلفة */
+        .cv-container.single-column {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cv-container.two-column {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .cv-container.asymmetric {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .cv-container.traditional {
+            max-width: 700px;
+            margin: 0 auto;
+            font-family: 'Times New Roman', serif;
+        }
+        
+        .cv-container.elegant {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 20px;
+            padding: 20px;
+        }
+        
+        /* أنماط الأقسام */
+        .content-section.cards {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .content-section.minimal {
+            border-left: 4px solid var(--primary-color, #00a86b);
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content-section.artistic {
+            position: relative;
+            background: linear-gradient(45deg, rgba(255,255,255,0.9), rgba(248,249,250,0.9));
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+        
+        .content-section.artistic::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(var(--primary-color, 0,168,107), 0.1), transparent);
+            transform: rotate(45deg);
+            z-index: -1;
+        }
+        
+        .content-section.structured {
+            border: 2px solid #e9ecef;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content-section.refined {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        
+        /* متغيرات CSS للألوان */
+        :root {
+            --primary-color: #00a86b;
+            --secondary-color: #ffffff;
+            --text-color: #333333;
+            --accent-color: #f8f9fa;
+        }
+        
+        /* تأثيرات الانتقال */
+        .cv-container, .content-section {
+            transition: all 0.3s ease;
+        }
+        
+        /* تحسينات الطباعة */
+        @media print {
+            .template-btn, .download-btn, .logout-btn, nav, .navigation, button {
+                display: none !important;
+            }
+            
+            .cv-container {
+                box-shadow: none !important;
+                background: white !important;
+            }
+            
+            .content-section {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+        }
+    </style>
+    
+    <!-- تهيئة الأنظمة -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // تهيئة نظام القوالب المتقدم
+            if (window.AdvancedCVTemplates) {
+                window.AdvancedCVTemplates.initializeTemplateSystem();
+            }
+            
+            // تحديث وظائف التحميل لاستخدام النظام الجديد
+            const downloadOptions = document.querySelectorAll('.download-option');
+            downloadOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const type = this.getAttribute('data-type');
+                    
+                    // إخفاء شريط التنقل قبل التصدير
+                    const navbar = document.querySelector('.navbar');
+                    if (navbar) {
+                        navbar.style.display = 'none';
+                        document.body.style.paddingTop = '0';
+                    }
+                    
+                    // إخفاء أزرار الكثافة
+                    const densityControls = document.querySelector('.density-controls');
+                    if (densityControls) {
+                        densityControls.style.display = 'none';
+                    }
+                    
+                    if (window.EnhancedPDFExporter) {
+                                                if (type === 'multi-ar') {                            window.EnhancedPDFExporter.exportMultiPageArabic();                        } else if (type === 'multi-en') {                            window.EnhancedPDFExporter.exportMultiPageEnglish();                        } else if (type === 'single-ar') {                            window.EnhancedPDFExporter.exportSinglePageArabic();                        } else if (type === 'single-en') {                            window.EnhancedPDFExporter.exportSinglePageEnglish();                        } else if (type === 'image') {                            window.EnhancedPDFExporter.exportAsImage();                        } else if (type === 'html') {                            exportAsHTML();                        } else if (type === 'markdown-pdf') {                            exportAsMarkdownPDF();                        }
+                        
+                        // إعادة إظهار شريط التنقل بعد التصدير (بتأخير قصير)
+                        setTimeout(() => {
+                            if (navbar) {
+                                navbar.style.display = 'flex';
+                                document.body.style.paddingTop = '60px';
+                            }
+                            if (densityControls) {
+                                densityControls.style.display = 'flex';
+                            }
+                        }, 1000);
+                    }
+                });
+            });
+            
+            // تحسين اكتشاف اخذ لقطة شاشة
+            const hideUIForScreenshot = () => {
+                const navbar = document.querySelector('.navbar');
+                const densityControls = document.querySelector('.density-controls');
+                const exportButtons = document.querySelector('.export-buttons');
+                
+                if (navbar) navbar.style.display = 'none';
+                if (densityControls) densityControls.style.display = 'none';
+                if (exportButtons) exportButtons.style.display = 'none';
+                document.body.style.paddingTop = '0';
+            };
+            
+            // اكتشاف تصدير كصورة
+            window.addEventListener('beforeprint', hideUIForScreenshot);
+            
+            // مراقبة مفاتيح لقطة الشاشة
+            document.addEventListener('keydown', function(e) {
+                // اكتشاف مفاتيح لقطة الشاشة المحتملة
+                if ((e.ctrlKey && e.key === 'PrintScreen') || 
+                    (e.altKey && e.key === 'PrintScreen') || 
+                    (e.key === 'PrintScreen') || 
+                    (e.ctrlKey && e.shiftKey && e.key === 'p') ||
+                    (e.ctrlKey && e.key === 's')) {
+                    hideUIForScreenshot();
+                    
+                    // إعادة إظهار العناصر بعد فترة
+                    setTimeout(() => {
+                        const navbar = document.querySelector('.navbar');
+                        const densityControls = document.querySelector('.density-controls');
+                        const exportButtons = document.querySelector('.export-buttons');
+                        
+                        if (navbar) navbar.style.display = 'flex';
+                        if (densityControls) densityControls.style.display = 'flex';
+                        if (exportButtons) exportButtons.style.display = 'block';
+                        document.body.style.paddingTop = '60px';
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

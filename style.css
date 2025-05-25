@@ -1,0 +1,1586 @@
+/* الخطوط */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
+
+/* إعادة تعيين الأنماط الافتراضية */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 950px;
+    margin: 2rem auto;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 2rem;
+    width: 100%;
+}
+
+/* تنسيق الهيدر */
+header {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: white;
+    padding: 1rem;
+    width: 100%;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid white;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    position: relative;
+    padding: 12px;
+}
+
+.avatar i {
+    font-size: 60px;
+    color: #000;
+    opacity: 1;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    position: relative;
+    z-index: 2;
+    transform: scale(1.1);
+}
+
+/* إضافة تأثير خلفية خفيف */
+.avatar::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.profile-image img {
+    display: none;
+}
+
+.profile-info h1 {
+    font-size: 1.6rem;
+    margin-bottom: 0.2rem;
+}
+
+.profile-info h2 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.contact-info p {
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+/* تنسيق الأقسام */
+main {
+    padding: 1rem;
+    width: 100%;
+}
+
+section {
+    margin-bottom: 1rem;
+    page-break-inside: avoid;
+}
+
+h3 {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+h3 i {
+    color: #3498db;
+}
+
+/* تنسيق الجدول الزمني */
+.timeline {
+    position: relative;
+    padding-right: 1rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #333 !important;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 0.7rem;
+    padding-right: 1rem;
+    page-break-inside: avoid;
+    transition: all 0.3s ease;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    right: -5px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #333 !important;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.date {
+    color: #666;
+    font-size: 0.75rem;
+    margin-bottom: 0.3rem;
+}
+
+.content h4 {
+    color: #2c3e50;
+    margin: 0 0 0.2rem 0;
+    font-size: 0.95rem;
+}
+
+.content h5 {
+    color: #666;
+    font-weight: 400;
+    margin: 0 0 0.2rem 0;
+    font-size: 0.85rem;
+}
+
+.content p {
+    margin: 0 0 0.2rem 0;
+}
+
+/* تنسيق المهارات واللغات */
+.skills-grid,
+.languages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.5rem;
+    page-break-inside: avoid;
+}
+
+.skill-item,
+.language-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    position: relative;
+}
+
+.skill-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.skill-item span {
+    flex: 1;
+    display: inline-block;
+}
+
+.skill-level,
+.language-level {
+    height: 6px;
+    background-color: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-progress,
+.language-progress {
+    height: 100%;
+    background-color: #3498db;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.skill-delete-btn {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    background: none !important;
+    border: none !important;
+    color: #e74c3c;
+    font-size: 1.3em;
+    cursor: pointer;
+    z-index: 2;
+    padding: 0 4px;
+    line-height: 1;
+    margin-right: 0;
+    margin-left: 0;
+    position: static;
+    order: -1;
+}
+
+.skill-item:hover .skill-delete-btn {
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+}
+
+@media print {
+  .skill-delete-btn {
+    display: none !important;
+  }
+}
+
+/* تنسيق زر تحميل PDF */
+.pdf-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.pdf-button button {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Cairo', sans-serif;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pdf-button button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.pdf-button button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-button i {
+    font-size: 1.2rem;
+}
+
+/* تنسيق متجاوب */
+@media (max-width: 768px) {
+    .profile {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contact-info {
+        align-items: center;
+    }
+
+    .container {
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .pdf-button {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: auto;
+    }
+}
+
+/* تعديل تأثير التحويم */
+.profile-image:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.profile-image:hover .avatar i {
+    transform: scale(1.2);
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+/* إضافة تأثير إضافي للأيقونة */
+.avatar i::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+p {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* إعدادات خاصة للطباعة و PDF */
+@media print {
+  html, body {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 0;
+    background: #fff !important;
+  }
+  .container {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 100vw !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+  main, header {
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+/* تنسيقات جديدة للتفاعلية في قسم المؤهلات والدورات */
+.add-btn {
+    cursor: pointer;
+    margin-right: 5px;
+    font-size: 1.2rem;
+}
+
+.delete-btn {
+    cursor: pointer;
+    color: #3498db;
+    font-size: 1.2rem;
+    margin-right: 5px;
+}
+
+.delete-btn:hover {
+    color: #e74c3c;
+}
+
+/* تنسيق العناصر القابلة للتحرير */
+[contenteditable="true"] {
+    outline: none;
+    transition: background-color 0.2s ease;
+    border-radius: 4px;
+    padding: 0 2px;
+}
+
+[contenteditable="true"]:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+[contenteditable="true"]:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.sidebar-contact p span[contenteditable="true"] {
+    display: inline-block;
+    min-width: 30px;
+}
+
+.sidebar-summary[contenteditable="true"] {
+    padding: 8px;
+    min-height: 80px;
+}
+
+.sidebar-name[contenteditable="true"],
+.sidebar-title[contenteditable="true"] {
+    text-align: center;
+}
+
+/* تنسيق المهارات كجدول زمني */
+#skills-timeline.timeline {
+    position: relative;
+    padding-right: 1rem;
+}
+#skills-timeline.timeline::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #333 !important;
+}
+#skills-timeline .timeline-item {
+    position: relative;
+    margin-bottom: 0.7rem;
+    padding-right: 1rem;
+    page-break-inside: avoid;
+}
+#skills-timeline .timeline-item::before {
+    content: '';
+    position: absolute;
+    right: -5px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #333 !important;
+    cursor: pointer;
+    z-index: 2;
+}
+/* إخفاء زر الحذف القديم للمهارات نهائيًا */
+.skill-delete-btn { display: none !important; }
+
+.skills-timeline-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 30px;
+    padding-right: 0.5rem;
+}
+.skills-timeline-grid .timeline-item {
+    position: relative;
+    margin-bottom: 0.7rem;
+    padding-right: 1.5rem;
+    page-break-inside: avoid;
+    background: var(--glass-bg);
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    width: auto;
+}
+.skills-timeline-grid .timeline-item::before {
+    content: '';
+    position: absolute;
+    right: 0.5rem;
+    top: 18px;
+    width: 2px;
+    height: calc(100% - 36px);
+    background-color: #333 !important;
+    z-index: 1;
+}
+.skills-timeline-grid .timeline-item::after {
+    content: '';
+    position: absolute;
+    right: -5px;
+    top: 18px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #333 !important;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s;
+}
+.skills-timeline-grid .timeline-item:hover::after {
+    background-color: #e74c3c;
+}
+
+.languages-timeline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 0.5rem;
+}
+.languages-timeline-list .timeline-item {
+    position: relative;
+    margin-bottom: 0.7rem;
+    padding-right: 1.5rem;
+    page-break-inside: avoid;
+    background: var(--glass-bg);
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.languages-timeline-list .timeline-item::before {
+    content: '';
+    position: absolute;
+    right: 0.5rem;
+    top: 18px;
+    width: 2px;
+    height: calc(100% - 36px);
+    background-color: #333 !important;
+    z-index: 1;
+}
+.languages-timeline-list .timeline-item::after {
+    content: '';
+    position: absolute;
+    right: -5px;
+    top: 18px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #333 !important;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s;
+}
+.languages-timeline-list .timeline-item:hover::after {
+    background-color: #e74c3c;
+}
+
+/* إزالة الخط العمودي والنقاط من قسم الهوايات */
+.sidebar-hobbies .timeline::before,
+#hobbies-timeline-list::before {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.sidebar-hobbies .timeline-item::before,
+.sidebar-hobbies .timeline-item::after,
+#hobbies-timeline-list .timeline-item::before,
+#hobbies-timeline-list .timeline-item::after {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.sidebar-hobbies .timeline-item {
+    padding-right: 0 !important;
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.sidebar-hobbies .timeline-item .content {
+    background: #fff;
+    padding: 15px 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    position: relative;
+    cursor: default;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sidebar-hobbies .timeline-item .content:hover {
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+}
+
+.sidebar-hobbies .timeline-item:not(:only-child) .content {
+    cursor: pointer;
+}
+
+.sidebar-hobbies .timeline-item:not(:only-child) .content::after {
+    content: none; /* إزالة التلميح للحذف بالنقر المزدوج */
+}
+
+#hobbies-timeline-list.timeline {
+    background: none !important;
+    border: none !important;
+    position: relative;
+}
+
+#hobbies-timeline-list.timeline::before,
+#hobbies-timeline-list.timeline::after {
+    display: none !important;
+    content: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: none !important;
+}
+
+#hobbies-timeline-list .timeline-item,
+.sidebar-hobbies .timeline-item {
+    border: none !important;
+    background: none !important;
+    padding-right: 0 !important;
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* إضافة نقطة الحذف بجانب كل هواية */
+.sidebar-hobbies .timeline-item .delete-dot {
+    content: '';
+    position: absolute;
+    right: -15px;
+    top: 25px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #333;
+    z-index: 2;
+    display: block;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.sidebar-hobbies .timeline-item .delete-dot:hover {
+    background: #e74c3c;
+}
+
+/* تعيين الحدود للمحتوى فقط وليس للعنصر بأكمله */
+.sidebar-hobbies .timeline-item .content {
+    margin-right: 0 !important;
+}
+
+/* نقاط الحذف لجميع الأقسام */
+.timeline-item {
+    position: relative !important;
+}
+
+.timeline-item .delete-dot {
+    content: '';
+    position: absolute !important;
+    right: -25px !important;
+    top: 0 !important;
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 50% !important;
+    background: #e74c3c !important;
+    z-index: 100 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    color: white !important;
+    font-weight: bold !important;
+    font-size: 12px !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
+    border: 2px solid white !important;
+    pointer-events: auto !important;
+}
+
+.timeline-item .delete-dot::after {
+    content: '×' !important;
+    display: block !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    line-height: 1 !important;
+}
+
+.timeline-item .delete-dot:hover {
+    background: #ff6b6b !important;
+    transform: scale(1.2) !important;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.3) !important;
+}
+
+/* مواضع مخصصة لنقاط الحذف في كل قسم */
+#qualifications-timeline .timeline-item .delete-dot {
+    top: 15px !important;
+    right: -10px !important;
+}
+
+#courses-timeline .timeline-item .delete-dot {
+    top: 15px !important;
+    right: -10px !important;
+}
+
+#experiences-timeline .timeline-item .delete-dot {
+    top: 15px !important;
+    right: -10px !important;
+}
+
+#achievements-timeline .timeline-item .delete-dot {
+    top: 15px !important;
+    right: -10px !important;
+}
+
+#languages-timeline-list .timeline-item .delete-dot {
+    top: 0 !important;
+    right: -10px !important;
+}
+
+#skills-timeline-grid .timeline-item .delete-dot {
+    top: 0 !important;
+    right: -10px !important;
+}
+
+#hobbies-timeline-list .timeline-item .delete-dot {
+    top: 5px !important;
+    right: -10px !important;
+}
+
+/* إزالة الخطوط العمودية من جميع الأقسام */
+.timeline::before,
+.timeline::after,
+.timeline-item::before,
+.timeline-item::after,
+.languages-list::before,
+.languages-list::after,
+#qualifications-timeline::before,
+#courses-timeline::before,
+#experiences-timeline::before,
+#achievements-timeline::before,
+#skills-timeline-grid::before,
+#languages-timeline-list::before,
+#hobbies-timeline-list::before,
+[class*="timeline"]::before,
+[class*="timeline"]::after,
+[class*="timeline"] *::before,
+[class*="timeline"] *::after,
+.sidebar-hobbies *::before,
+.sidebar-hobbies *::after,
+.timeline-item .content::before,
+.timeline-item .content::after,
+.sidebar .timeline-item::before,
+.sidebar .timeline-item::after,
+.sidebar-skills .skill-item::before,
+.sidebar-skills .skill-item::after,
+.skills-timeline-grid *::before,
+.skills-timeline-grid *::after,
+.languages-timeline-list *::before,
+.languages-timeline-list *::after {
+    display: none !important;
+    content: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: none !important;
+    border: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* إعادة تنسيق العناصر بعد إزالة الخطوط العمودية */
+.timeline-item,
+.sidebar-hobbies .timeline-item,
+#hobbies-timeline-list .timeline-item,
+.skills-timeline-grid .timeline-item,
+.languages-timeline-list .timeline-item,
+.sidebar .timeline-item {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    border-right: none !important;
+    background: none !important;
+    position: relative !important;
+    margin-bottom: 15px !important;
+}
+
+/* تنسيق نقاط الحذف وجعلها أكثر وضوحًا */
+.timeline-item .delete-dot {
+    position: absolute !important;
+    right: 10px !important;
+    top: 10px !important;
+    width: 25px !important;
+    height: 25px !important;
+    border-radius: 50% !important;
+    background: #e74c3c !important;
+    z-index: 100 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    color: white !important;
+    font-weight: bold !important;
+    font-size: 14px !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2) !important;
+    border: 2px solid white !important;
+    pointer-events: auto !important;
+}
+
+/* إزالة الخطوط العمودية من قسم المؤهلات العلمية والدورات التدريبية */
+#qualifications-timeline,
+#courses-timeline {
+    position: relative !important;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+}
+
+#qualifications-timeline::before,
+#qualifications-timeline::after,
+#qualifications-timeline .timeline-item::before,
+#qualifications-timeline .timeline-item::after,
+#courses-timeline::before,
+#courses-timeline::after,
+#courses-timeline .timeline-item::before,
+#courses-timeline .timeline-item::after,
+.timeline::before,
+.timeline::after,
+.timeline-item::before,
+.timeline-item::after,
+.timeline .timeline-item::before,
+.timeline .timeline-item::after,
+.glass-card .timeline::before,
+.glass-card .timeline::after,
+div[style*="display: grid"] .timeline::before,
+div[style*="display: grid"] .timeline::after,
+div[style*="display: grid"] .timeline-item::before,
+div[style*="display: grid"] .timeline-item::after,
+[class*="timeline"]::before,
+[class*="timeline"]::after,
+.section-title + div .timeline::before,
+.section-title + div .timeline::after,
+.section-title + div .timeline-item::before,
+.section-title + div .timeline-item::after {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+    background-color: transparent !important;
+    width: 0 !important;
+    height: 0 !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    border: none !important;
+    position: absolute !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+}
+
+/* حذف الخطوط الخضراء في أقسام المؤهلات والدورات */
+.glass-card:nth-child(1) .timeline-item,
+section:first-of-type .timeline-item,
+.glass-card:nth-child(1) [class*="timeline"],
+section:first-of-type [class*="timeline"] {
+    position: relative !important;
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    border-right: none !important;
+    background: none !important;
+}
+
+/* تغيير نمط النقاط الخضراء لتصبح منفصلة بدون خطوط */
+.glass-card:nth-child(1) .timeline-item::after,
+section:first-of-type .timeline-item::after {
+    content: '' !important;
+    position: absolute !important;
+    right: -15px !important;
+    top: 10px !important;
+    width: 15px !important;
+    height: 15px !important;
+    border-radius: 50% !important;
+    background-color: #00a86b !important;
+    display: block !important;
+    border: 3px solid #e6f7ef !important;
+    z-index: 2 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* تطبيق قواعد خاصة لإزالة أي خطوط عمودية في المؤهلات العلمية والدورات */
+.section-title:contains("المؤهلات العلمية") + div *::before,
+.section-title:contains("المؤهلات العلمية") + div *::after,
+.section-title:contains("الدورات التدريبية") + div *::before,
+.section-title:contains("الدورات التدريبية") + div *::after,
+h4:contains("المؤهلات العلمية") + div *::before,
+h4:contains("المؤهلات العلمية") + div *::after,
+h4:contains("الدورات التدريبية") + div *::before,
+h4:contains("الدورات التدريبية") + div *::after {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+/* إزالة الخطوط العمودية من قسم المؤهلات العلمية والدورات التدريبية فقط */
+#qualifications-timeline.timeline::before,
+#courses-timeline.timeline::before {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    border: none !important;
+}
+
+#qualifications-timeline .timeline-item::before,
+#courses-timeline .timeline-item::before {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    border: none !important;
+}
+
+#qualifications-timeline .timeline-item,
+#courses-timeline .timeline-item {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    border-right: none !important;
+}
+
+/* تحسين تجربة المستخدم للنقر المزدوج */
+.timeline-item {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.timeline-item .content {
+    cursor: pointer;
+}
+
+[contenteditable="true"] {
+    cursor: text;
+}
+
+/* تعديل لون المؤشرات والنقاط في جميع الأقسام */
+.timeline::before,
+.timeline-item::before,
+.timeline-item::after,
+.timeline .timeline-item::before,
+.timeline .timeline-item::after,
+[class*="timeline"]::before,
+[class*="timeline"]::after,
+[class*="timeline"] .timeline-item::before,
+[class*="timeline"] .timeline-item::after,
+.glass-card .timeline::before,
+.glass-card .timeline-item::before,
+.glass-card .timeline-item::after,
+section .timeline::before,
+section .timeline-item::before,
+section .timeline-item::after {
+    background-color: #333 !important;
+    border-color: #333 !important;
+}
+
+/* إعادة تعريف للتعامل مع تغيير اللون عند التحويم */
+.timeline-item:hover::after {
+    background-color: #777 !important;
+}
+
+.sidebar .sidebar-contact p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.08);
+    padding: 7px 12px;
+    border-radius: 16px;
+    margin-bottom: 8px;
+    font-size: 1em;
+    color: #fff;
+    position: relative;
+}
+
+.sidebar .sidebar-contact p i {
+    min-width: 16px;
+    text-align: center;
+}
+
+.sidebar .sidebar-summary-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 7px;
+    margin-top: 10px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.sidebar .sidebar-summary-title i {
+    margin-left: 5px;
+}
+
+.sidebar-contact p span[contenteditable="true"] {
+    display: inline-block;
+    min-width: 60%;
+    word-break: break-all;
+}
+
+/* تنسيق إضافي لتجربة تعديل أفضل */
+.sidebar-name[contenteditable="true"],
+.sidebar-title[contenteditable="true"] {
+    display: block;
+    width: 100%;
+    margin-bottom: 6px;
+}
+
+/* تنسيق خاص للعناصر أثناء التعديل */
+.editing {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4) !important;
+    position: relative;
+}
+
+.editing::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+    animation: edit-pulse 1.5s infinite;
+}
+
+@keyframes edit-pulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.3; }
+}
+
+.sidebar-contact p:hover,
+.sidebar-name:hover,
+.sidebar-title:hover,
+.sidebar-summary:hover {
+    cursor: text;
+}
+
+.sidebar .profile-image {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.sidebar .profile-image:hover {
+    transform: scale(1.05);
+}
+
+.sidebar .profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #fff;
+}
+
+/* أزرار تغيير الألوان */
+.color-switcher {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    padding: 8px 15px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.color-option {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+}
+
+.color-option:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.color-option.active {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 2px #fff, 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .color-switcher {
+        top: auto;
+        bottom: 70px;
+    }
+}
+
+/* تنسيقات شريط التنقل العلوي */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1001;
+}
+
+/* تنسيق قسم تسجيل الدخول في الجانب الأيمن */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-buttons button {
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.auth-buttons .profile-btn {
+    background-color: transparent;
+}
+
+.auth-buttons .profile-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.auth-buttons .logout-btn {
+    background-color: rgba(231, 76, 60, 0.05);
+    color: #e74c3c;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-buttons .logout-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgba(231, 76, 60, 0.1);
+    transition: width 0.3s ease;
+    z-index: -1;
+}
+
+.auth-buttons .logout-btn:hover {
+    background-color: rgba(231, 76, 60, 0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.05);
+}
+
+.auth-buttons .logout-btn:hover::before {
+    width: 100%;
+}
+
+.auth-buttons .download-btn {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.auth-buttons .download-btn:hover {
+    background-color: #008c5a;
+}
+
+.auth-buttons button i {
+    font-size: 16px;
+}
+
+/* تنسيق القائمة الرئيسية في الوسط */
+.main-menu {
+    display: flex;
+    gap: 20px;
+}
+
+.main-menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.main-menu a:hover {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+}
+
+.main-menu a.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* تنسيق أزرار تغيير الألوان في الجانب الأيسر */
+.color-switcher {
+    display: flex;
+    gap: 8px;
+}
+
+.color-option {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.color-option:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.color-option.active {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 2px #fff, 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* تنسيق زر القائمة للشاشات الصغيرة */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.menu-toggle span {
+    width: 30px;
+    height: 3px;
+    background: var(--text-color);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* تعديلات للشاشات المتوسطة والصغيرة */
+@media (max-width: 992px) {
+    .navbar {
+        padding: 0 15px;
+    }
+    
+    .main-menu {
+        gap: 10px;
+    }
+    
+    .main-menu a {
+        font-size: 0.9em;
+        padding: 8px 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .main-menu {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: white;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        gap: 15px;
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        z-index: 1000;
+    }
+    
+    .main-menu.active {
+        transform: translateY(0);
+    }
+    
+    .color-switcher {
+        gap: 5px;
+    }
+    
+    .color-option {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        padding: 0 10px;
+    }
+    
+    .auth-buttons button {
+        font-size: 0.8em;
+        padding: 6px 8px;
+    }
+    
+    .auth-buttons .register-btn {
+        padding: 6px 8px;
+    }
+}
+
+/* تنسيق قائمة التحميل المنسدلة */
+.download-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.download-options {
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    padding: 8px 0;
+    z-index: 1001;
+    display: none;
+    animation: fadeIn 0.2s ease;
+}
+
+.download-options.show {    display: block;}
+
+.download-options button {
+    display: block;
+    width: 100%;
+    text-align: right;
+    background-color: transparent;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-color);
+}
+
+.download-options button:hover {
+    background-color: var(--primary-light);
+    color: var(--primary-color);
+}
+
+.download-options button i {
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* تعديلات على زر التحميل الأساسي */
+.download-btn {
+    position: relative;
+}
+
+.download-btn::after {
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 5px;
+    font-size: 12px;
+    transition: transform 0.2s ease;
+}
+
+.download-btn.active::after {    transform: rotate(180deg);}
+
+@media (max-width: 768px) {
+    .download-options {
+        left: 0;
+        right: auto;
+    }
+}
+
+/* تنسيق رسالة التحميل */
+.download-message {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.download-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.download-message.error {
+    background-color: #e74c3c;
+}
+
+@media (max-width: 576px) {
+    .download-message {
+        left: 20px;
+        right: 20px;
+        text-align: center;
+    }
+}
+
+/* Optimize spacing for print */
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .cv-container {
+        padding: 10px !important;
+        margin: 0 !important;
+    }
+    
+    .section {
+        margin-bottom: 15px !important;
+        padding: 10px !important;
+    }
+    
+    .timeline-item {
+        margin-bottom: 10px !important;
+        padding: 5px !important;
+    }
+    
+    .sidebar {
+        padding: 10px !important;
+    }
+    
+    .main-content {
+        padding: 10px !important;
+    }
+    
+    /* Remove unnecessary spacing */
+    .section-title {
+        margin-bottom: 10px !important;
+    }
+    
+    .timeline::before {
+        margin: 0 !important;
+    }
+    
+    /* Optimize grid layout */
+    .skills-timeline-grid {
+        gap: 10px !important;
+    }
+    
+    /* Reduce font sizes for print */
+    body {
+        font-size: 12px !important;
+    }
+    
+    h1, h2, h3 {
+        margin: 5px 0 !important;
+    }
+    
+    /* Optimize image sizes */
+    .profile-image img {
+        width: 80px !important;
+        height: 80px !important;
+    }
+}
+
+/* General spacing optimization */
+.cv-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.section {
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.timeline-item {
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.skills-timeline-grid {
+    gap: 15px;
+}
+
+/* Responsive spacing */
+@media (max-width: 768px) {
+    .cv-container {
+        padding: 10px;
+    }
+    
+    .section {
+        margin-bottom: 15px;
+        padding: 10px;
+    }
+    
+    .timeline-item {
+        margin-bottom: 10px;
+        padding: 8px;
+    }
+}
+
+ 
